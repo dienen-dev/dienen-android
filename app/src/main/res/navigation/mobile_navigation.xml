@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="us.gijuno.dienen_v3.ui.home.HomeFragment"
+        android:label="home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_menu"
+        android:name="us.gijuno.dienen_v3.ui.menu.MenuFragment"
+        android:label="menu"
+        tools:layout="@layout/fragment_menu" />
+
+    <fragment
+        android:id="@+id/navigation_notification"
+        android:name="us.gijuno.dienen_v3.ui.notifications.NotificationsFragment"
+        android:label="notification"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="us.gijuno.dienen_v3.ui.setting.SettingFragment"
+        android:label="setting"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>

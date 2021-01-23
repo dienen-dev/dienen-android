@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_icon"
+        android:title="홈" />
+
+    <item
+        android:id="@+id/navigation_menu"
+        android:icon="@drawable/ic_menu_icon"
+        android:title="메뉴" />
+
+    <item
+        android:id="@+id/navigation_notification"
+        android:icon="@drawable/ic_alert_black"
+        android:title="공지" />
+
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_setting"
+        android:title="설정" />
+
+</menu>

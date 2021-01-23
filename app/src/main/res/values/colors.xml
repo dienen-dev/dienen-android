@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6BBBB2</color>
+    <color name="colorPrimary10per">#E6F9F9</color>
+    <color name="colorPrimaryDark">#6BBBB2</color>
+    <color name="bodyColor">#888888</color>
+    <color name="disableColor">#999999</color>
+    <color name="blackColor">#222222</color>
+    <color name="backgroundColor">#F8F8F8</color>
+    <color name="boxColor">#FFFFFF</color>
+    <color name="borderColor">#E1E1E1</color>
+    <color name="borderColor2">#C2C2C2</color>
+    <color name="disableBox">#EEEEEE</color>
+    <color name="selectedBox">#F2FCFB</color>
+    <color name="icon_custom">#5E5E5E</color>
+    <color name="white">#FFFFFF</color>
+</resources>

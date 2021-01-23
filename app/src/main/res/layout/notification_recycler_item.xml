@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/noti_when"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/blackColor"
+        android:text="오늘 점심"
+        android:textSize="18sp"
+        android:fontFamily="@font/noto_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/noti_layout"
+        android:orientation="vertical"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="6dp"
+        android:elevation="5dp"
+        android:padding="20dp"
+        android:clipToPadding="false"
+        android:background="@drawable/round_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/noti_title"
+                android:fontFamily="@font/noto_bold"
+                android:textSize="14sp"
+                android:text="급식 메뉴 변경 안내"
+                android:textColor="@color/blackColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/noti_new"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/noti_title"
+                android:src="@drawable/ic_noti_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/noti_contents"
+                android:fontFamily="@font/noto_medium"
+                android:textSize="12sp"
+                android:textColor="@color/blackColor"
+                android:text="금일 배식 예정이였던 “연근떡조림”은 “숯불닭갈비”로 변경되었습니다. 변경메뉴에 식품 알러지가 있는 학생을 위해 “양배추샐러드”도 준비하였습니다. 관련 내용 숙지 바랍니다."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
