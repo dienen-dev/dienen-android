@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.lang.Exception
+import java.net.SocketTimeoutException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -16,7 +17,7 @@ class Repository {
     val menuGetFailedEvent = SingleLiveEvent<Void>()
     suspend fun getMenu() {
         try {
-            DimibobRequester.getMenu("20201010").let {
+            DimibobRequester.getMenu(SimpleDateFormat("yyyy-MM-dd").format(Date()).toString()).let {
                 withContext(Dispatchers.Main) {
                     _menu.value = it
                 }
@@ -26,14 +27,18 @@ class Repository {
             withContext(Dispatchers.Main) {
                 menuGetFailedEvent.call()
             }
+        } catch (e: SocketTimeoutException) {
+            Log.e("Repository","Today get Menu : $e")
+            withContext(Dispatchers.Main) {
+                menuGetFailedEvent.call()
+            }
         }
     }
-    suspend fun getTomMenu() {
 
+    suspend fun getTomMenu() {
         try {
             val cal_ins = Calendar.getInstance()
             cal_ins.add(Calendar.DATE, 1)
-            Log.d("Repo Tom Date", "${SimpleDateFormat("yyyy-MM-dd").format(cal_ins.time).toString()}")
             DimibobRequester.getMenu(SimpleDateFormat("yyyy-MM-dd").format(cal_ins.time).toString()).let {
                 withContext(Dispatchers.Main) {
                     _menu.value = it
@@ -44,7 +49,35 @@ class Repository {
             withContext(Dispatchers.Main) {
                 menuGetFailedEvent.call()
             }
+        } catch (e: SocketTimeoutException) {
+            Log.e("Repository","Tomorrow get Menu : $e")
+            withContext(Dispatchers.Main) {
+                menuGetFailedEvent.call()
+            }
         }
 
+    }
+
+    private val _notilist = MutableLiveData<List<Notice>>()
+    val notilist: LiveData<List<Notice>> = _notilist
+    val notilistGetFailedEvent = SingleLiveEvent<Void>()
+    suspend fun getNoticeList() {
+        try {
+            DienenServiceRequester.getNoticeList().let {
+                withContext(Dispatchers.Main) {
+                    _notilist.value = it
+                }
+            }
+        } catch (e: IllegalArgumentException) {
+            Log.e("Repository", "Get Notice List : $e")
+            withContext(Dispatchers.Main) {
+                notilistGetFailedEvent.call()
+            }
+        } catch (e: SocketTimeoutException) {
+            Log.e("Repository", "Get Notice List : $e")
+            withContext(Dispatchers.Main) {
+                notilistGetFailedEvent.call()
+            }
+        }
     }
 }
