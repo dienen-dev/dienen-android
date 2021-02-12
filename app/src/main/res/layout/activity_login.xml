@@ -4,24 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
 
     <ImageView
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_dienen_logo"
         android:layout_width="50dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_dienen_logo" />
 
 
     <LinearLayout
-        android:gravity="center_vertical"
         android:id="@+id/loginMainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center_vertical"
         android:orientation="vertical">
 
         <LinearLayout
@@ -77,11 +76,11 @@
 
                 <EditText
                     android:id="@+id/login_pw_et"
-                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:hint="비밀번호 입력"
+                    android:inputType="textPassword"
                     android:textColorHint="@color/disableColor"
                     android:textSize="14sp" />
 
@@ -89,17 +88,17 @@
             </LinearLayout>
 
             <Button
-                android:textStyle="bold"
-                android:enabled="false"
                 android:id="@+id/login_login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/login_button"
+                android:enabled="false"
                 android:orientation="horizontal"
                 android:text="로그인"
                 android:textColor="@color/colorPrimary"
-                android:textSize="14dp" />
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"

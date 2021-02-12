@@ -20,16 +20,23 @@ data class Register (
     val verificationKey: String,
 )
 
-data class Menu (
-    val breakfast: String,
-    val lunch: String,
-    val dinner: String,
-)
+data class Meal (val meal: Menu) {
+    data class Menu (
+        val breakfast: List<String>,
+        val lunch: List<String>,
+        val dinner: List<String>,
+    )
+}
+
+
 
 interface DienenService {
 
     @GET("noticelist")
     fun getNoticeList(): Call<List<Notice>>
+
+    @GET("noticerecent")
+    fun getNoticeRecent(): Call<Notice>
 
     @POST("register")
     @FormUrlEncoded
@@ -42,7 +49,7 @@ interface DienenService {
 }
 
 interface Dimibob {
-    @GET("dimibobs/{date}")
-    fun getMenu(@Path("date") date: String): Call<Menu>
+    @GET("meal/date/{date}")
+    fun getMenu(@Path("date") date: String): Call<Meal>
 }
 

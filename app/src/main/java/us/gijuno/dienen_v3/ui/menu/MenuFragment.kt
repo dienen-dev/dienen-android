@@ -8,12 +8,9 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_menu.*
 import us.gijuno.dienen_v3.R
-import us.gijuno.dienen_v3.data.Menu
+import us.gijuno.dienen_v3.data.Meal
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -51,24 +48,24 @@ class MenuFragment : Fragment() {
             Log.d("HomeFrag", "menu get failed event called")
         }
 
-        menuViewModel.menu.observe(viewLifecycleOwner) { menu ->
+        menuViewModel.menu.observe(viewLifecycleOwner) { meal ->
             when (compareTime) {
                 in 0..800 -> {
-                    showTodayMenu(menu)
+                    showTodayMenu(meal)
                     showYoil()
                     menu_ahchim_layout.setBackgroundResource(R.drawable.round_layout_primary)
                     menu_ahchim.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
                     menu_breakfast.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
                 }
                 in 801..1350 -> {
-                    showTodayMenu(menu)
+                    showTodayMenu(meal)
                     showYoil()
                     menu_jeomshim_layout.setBackgroundResource(R.drawable.round_layout_primary)
                     menu_jeomshim.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
                     menu_lunch.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
                 }
                 in 1351..1950 -> {
-                    showTodayMenu(menu)
+                    showTodayMenu(meal)
                     showYoil()
                     menu_jeonyeonk_layout.setBackgroundResource(R.drawable.round_layout_primary)
                     menu_jeonyeonk.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
@@ -76,7 +73,7 @@ class MenuFragment : Fragment() {
                 }
                 else -> {
                     showTomYoil()
-                    showTodayMenu(menu)
+                    showTodayMenu(meal)
                 }
             }
         }
@@ -84,13 +81,10 @@ class MenuFragment : Fragment() {
         return root
     }
 
-    fun showTodayMenu(menu: Menu) {
-        menu_breakfast.text = menu.breakfast
-        menu_lunch.text = menu.lunch
-        menu_dinner.text = menu.dinner
-
-
-
+    fun showTodayMenu(meal: Meal) {
+        menu_breakfast.text = meal.meal.breakfast.joinToString()
+        menu_lunch.text = meal.meal.lunch.joinToString()
+        menu_dinner.text = meal.meal.dinner.joinToString()
 
     }
 

@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object DienenServiceRequester {
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://docker.hanukoon.com:9473/")
+        .baseUrl("http://dienen-backend-waxwg4t74q-uc.a.run.app/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -15,6 +15,10 @@ object DienenServiceRequester {
 
     fun getNoticeList(): List<Notice> {
         return service.getNoticeList().execute().body() ?: listOf()
+    }
+
+    fun getNoticeRecent(): Notice {
+        return service.getNoticeRecent().execute().body() ?: Notice("err","err","err","err","err")
     }
 
     fun postRegister(name: String, userID: String, password: String, verificationKey: String): Int {
@@ -25,13 +29,13 @@ object DienenServiceRequester {
 
 object DimibobRequester {
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://dev-api.dimigo.in/")
+        .baseUrl("https://api.dimigo.in/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     private val service = retrofit.create(Dimibob::class.java)
 
-    fun getMenu(date: String): Menu {
+    fun getMenu(date: String): Meal {
         return service.getMenu(date).execute().body().also { Log.d("DienenServiceRequester", "Menu : ${it.toString()}") } ?: throw IllegalArgumentException()
     }
 }

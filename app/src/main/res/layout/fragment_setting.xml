@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"/>
 
             <LinearLayout
+                android:id="@+id/verify_dienen_btn"
                 android:orientation="vertical"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"

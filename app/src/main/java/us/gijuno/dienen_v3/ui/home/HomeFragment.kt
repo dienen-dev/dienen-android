@@ -33,6 +33,8 @@ class HomeFragment : Fragment() {
             Log.d("HomeFrag", "menu get failed event called")
         }
 
+
+
         homeViewModel.menu.observe(viewLifecycleOwner) { menu ->
             val min = Calendar.getInstance().get(Calendar.MINUTE)
             val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
@@ -42,24 +44,33 @@ class HomeFragment : Fragment() {
             when (compareTime) {
                 in 0..800 -> {
                     menu_mola.text = "아침"
-                    menu_idk.text = menu.breakfast
+                    menu_idk.text = menu.meal.breakfast.joinToString()
                 }
                 in 801..1350 -> {
                     menu_mola.text = "점심"
-                    menu_idk.text = menu.lunch
+                    menu_idk.text = menu.meal.lunch.joinToString()
                 }
                 in 1351..1950 -> {
                     menu_mola.text = "저녁"
-                    menu_idk.text = menu.dinner
+                    menu_idk.text = menu.meal.dinner.joinToString()
                 }
                 else -> {
                     menu_mola.text = "아침"
-                    menu_idk.text = menu.breakfast
+                    menu_idk.text = menu.meal.breakfast.joinToString()
                 }
             }
         }
 
+        homeViewModel.notirecent.observe(viewLifecycleOwner) { recent ->
+            noti_mola.text = recent.title
+            noti_idk.text = recent.context
+        }
 
+        homeViewModel.notirecentGetFailedEvent.observe(viewLifecycleOwner) {
+            noti_mola.text = "서버 펑 .."
+            noti_idk.text = "서버 펑 .."
+            Log.d("HomeFrag", "notice recent get failed event called")
+        }
 
         return root
     }
