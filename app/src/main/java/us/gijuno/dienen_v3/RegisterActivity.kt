@@ -10,6 +10,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
@@ -39,11 +41,14 @@ class RegisterActivity : AppCompatActivity() {
             val name = register_name_et.text.toString()
             val userID = register_id_et.text.toString()
             val password = register_pw_et.text.toString()
-            val verificationKey = "dienenapplication"
+            val verificationKey = "0000"
 
             //TODO 레트로핏 작성
 
-            Repository().postRegister(name,userID,password,verificationKey)
+            GlobalScope.launch {
+                Repository().postRegister(name,userID,password,verificationKey)
+            }
+
 
            startActivity(Intent(this, MainActivity::class.java))
         }

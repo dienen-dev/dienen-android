@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object DienenServiceRequester {
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://dienen-backend-waxwg4t74q-uc.a.run.app/")
+        .baseUrl("https://dienen-backend-waxwg4t74q-uc.a.run.app/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

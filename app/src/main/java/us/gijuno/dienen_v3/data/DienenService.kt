@@ -35,7 +35,7 @@ interface DienenService {
     @GET("noticelist")
     fun getNoticeList(): Call<List<Notice>>
 
-    @GET("noticerecent")
+    @GET("notice/recent")
     fun getNoticeRecent(): Call<Notice>
 
     @POST("register")

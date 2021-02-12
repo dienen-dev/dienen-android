@@ -76,7 +76,7 @@ class Repository {
             DienenServiceRequester.getNoticeRecent().let {
                 withContext(Dispatchers.Main) {
                     _notirecent.value = it
-                    Log.d("Repository Notice Recent", it.toString())
+                    Log.d("Repo Notice Recent", it.toString())
                 }
             }
         } catch (e: Exception) {
@@ -88,10 +88,12 @@ class Repository {
         }
     }
 
-    fun postRegister(name: String, userID: String, password: String, verificationkey: String) {
+    suspend fun postRegister(name: String, userID: String, password: String, verificationkey: String) {
         try {
-            DienenServiceRequester.postRegister(name = name, userID = userID, password = password, verificationKey = verificationkey).let {
-                Log.d("PostRegister","GG")
+            DienenServiceRequester.postRegister(name, userID, password, verificationkey).let {
+                withContext(Dispatchers.Main) {
+                    Log.d("PostRegister","GG")
+                }
             }
         } catch (e: Exception) {
             Log.d("PostRegister","XX")
