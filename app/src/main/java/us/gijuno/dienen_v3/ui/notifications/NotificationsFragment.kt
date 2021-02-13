@@ -77,7 +77,7 @@ class NotificationsFragment : Fragment() {
                 val notifyCreatedAt: String = items[position].createdAt //2020-12-03T18:07:14.359Z
 
                 val (_, _, date, hour, minute) =
-                    """(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):\d{2}:\d{3}Z""".toRegex()
+                    """(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):\d{2}.\d{3}Z""".toRegex()
                         .matchEntire(notifyCreatedAt)?.destructured?.let { (year, month, date, hour, minute) ->
                             Component5(
                                 year.toInt(),

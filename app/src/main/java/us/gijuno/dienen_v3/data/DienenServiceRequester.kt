@@ -22,6 +22,15 @@ object DienenServiceRequester {
     }
 
     fun postRegister(name: String, userID: String, password: String, verificationKey: String): Int {
+        var registerResponseCode: String = service.postRegister(name,userID,password,verificationKey).execute().code().toString()
+        Log.d("Requester", registerResponseCode)
+        if(registerResponseCode == "200") {
+            //TODO Success Alert
+        } else if (registerResponseCode == "403") {
+            //TODO VerificationKey Dismatch Alert
+        } else if (registerResponseCode == "409") {
+            //TODO Used UserID
+        }
         return service.postRegister(name,userID,password,verificationKey).execute().code()
     }
 

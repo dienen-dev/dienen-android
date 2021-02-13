@@ -41,7 +41,7 @@ class RegisterActivity : AppCompatActivity() {
             val name = register_name_et.text.toString()
             val userID = register_id_et.text.toString()
             val password = register_pw_et.text.toString()
-            val verificationKey = "0000"
+            val verificationKey = register_code_et.text.toString()
 
             //TODO 레트로핏 작성
 
