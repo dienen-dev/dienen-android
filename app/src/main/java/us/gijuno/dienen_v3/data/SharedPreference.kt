@@ -27,6 +27,10 @@ class PreferenceUtil(context: Context) {
     }
 }
 
+enum class Keys {
+    ACCESS_TOKEN
+}
+
 // 데이터 저장
 // SharedPreference.prefs.setString("email", "abcd@gmail.com")
 // 데이터 조회

@@ -43,8 +43,6 @@ class RegisterActivity : AppCompatActivity() {
             val password = register_pw_et.text.toString()
             val verificationKey = register_code_et.text.toString()
 
-            //TODO 레트로핏 작성
-
             GlobalScope.launch {
                 Repository().postRegister(name,userID,password,verificationKey)
             }

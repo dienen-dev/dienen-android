@@ -11,6 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import us.gijuno.dienen_v3.data.Repository
 
 
 class LoginActivity : AppCompatActivity() {
@@ -21,8 +24,17 @@ class LoginActivity : AppCompatActivity() {
         login_id_et.addTextChangedListener(textWatcher)
         login_pw_et.addTextChangedListener(textWatcher)
 
+        login_login_btn.setOnClickListener {
+
+            val userID = login_id_et.text.toString()
+            val passowrd = login_pw_et.text.toString()
+
+            GlobalScope.launch {
+                Repository().postLogin(userID,passowrd)
+            }
+        }
+
         login_goto_register_btn.setOnClickListener() {
-            //TODO 레지스터 액티비티로 연결
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
@@ -42,11 +54,9 @@ class LoginActivity : AppCompatActivity() {
             s: CharSequence, start: Int, count: Int,
             after: Int
         ) {
-            // TODO Auto-generated method stub
         }
 
         override fun afterTextChanged(s: Editable) {
-            // TODO Auto-generated method stub
         }
     }
 

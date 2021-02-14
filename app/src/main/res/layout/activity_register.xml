@@ -236,20 +236,24 @@
         </LinearLayout>
 
         <Button
+            android:padding="13dp"
+            app:rippleColor="#C8C8C8"
+            app:cornerRadius="23.5dp"
+            app:strokeWidth="2dp"
+            app:strokeColor="@color/colorPrimary"
             android:fontFamily="@font/noto_bold"
             android:layout_marginBottom="40dp"
             android:enabled="false"
             android:textStyle="bold"
+            style="@style/state_button"
             android:id="@+id/register_register_btn"
             android:layout_marginLeft="65.5dp"
             android:layout_marginRight="65.5dp"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
-            android:background="@drawable/login_button"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
             android:text="회원가입"
             android:textColor="@color/colorPrimary"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 

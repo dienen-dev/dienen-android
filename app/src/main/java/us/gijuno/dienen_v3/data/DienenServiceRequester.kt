@@ -4,6 +4,8 @@ import android.util.Log
 import kotlinx.android.synthetic.main.activity_register.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import us.gijuno.dienen_v3.EmptyResponse
+import java.lang.Exception
 
 object DienenServiceRequester {
     private val retrofit = Retrofit.Builder()
@@ -22,18 +24,18 @@ object DienenServiceRequester {
     }
 
     fun postRegister(name: String, userID: String, password: String, verificationKey: String): Int {
-        var registerResponseCode: String = service.postRegister(name,userID,password,verificationKey).execute().code().toString()
-        Log.d("Requester", registerResponseCode)
-        if(registerResponseCode == "200") {
-            //TODO Success Alert
-        } else if (registerResponseCode == "403") {
-            //TODO VerificationKey Dismatch Alert
-        } else if (registerResponseCode == "409") {
-            //TODO Used UserID
-        }
-        return service.postRegister(name,userID,password,verificationKey).execute().code()
+        val registerResponseCode: Int = service.postRegister(name,userID,password,verificationKey).execute().code()
+        Log.d("Register Response", registerResponseCode.toString())
+        return registerResponseCode
     }
 
+    fun postLogin(userID: String, password: String): Int {
+        val loginResponse = service.postLogin(userID, password).execute()
+        val accessToken: String = loginResponse.body()?.accessToken ?: ""
+        SharedPreference.prefs.setString(Keys.ACCESS_TOKEN.name, accessToken)
+        Log.d("Login Response", loginResponse.code().toString())
+        return loginResponse.code()
+    }
 }
 
 object DimibobRequester {

@@ -88,16 +88,20 @@
             </LinearLayout>
 
             <Button
+                app:rippleColor="#C8C8C8"
+                android:padding="13dp"
+                app:cornerRadius="23.5dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/colorPrimary"
                 android:id="@+id/login_login_btn"
                 android:layout_width="match_parent"
-                android:layout_height="47dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                android:background="@drawable/login_button"
-                android:enabled="false"
-                android:orientation="horizontal"
+                style="@style/state_button"
                 android:text="로그인"
                 android:textColor="@color/colorPrimary"
-                android:textSize="14dp"
+                android:textSize="14sp"
+                android:enabled="false"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -115,9 +119,10 @@
                     android:textSize="12dp" />
 
                 <TextView
+                    android:clickable="true"
                     android:id="@+id/login_goto_register_btn"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="회원가입 하기"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12dp" />

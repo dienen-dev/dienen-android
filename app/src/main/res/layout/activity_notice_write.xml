@@ -56,15 +56,17 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.chip.ChipGroup
-            android:layout_marginLeft="24dp"
-            android:id="@+id/chipGroup"
+            android:id="@+id/notice_write_chipGroup"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:checkedChip="@+id/write_chip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/write_chip"
+                android:layout_marginLeft="24dp"
                 android:elevation="5dp"
-                app:chipBackgroundColor="@color/colorPrimary"
-                android:textColor="@color/white"
                 app:chipCornerRadius="5dp"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
@@ -72,9 +74,8 @@
                 android:text="직접 입력"/>
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/late_chip"
                 android:elevation="5dp"
-                app:chipBackgroundColor="@color/chip_item"
-                android:textColor="@color/disableColor"
                 app:chipCornerRadius="5dp"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
@@ -82,9 +83,8 @@
                 android:text="급식 지연 안내"/>
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/change_chip"
                 android:elevation="5dp"
-                app:chipBackgroundColor="@color/chip_item"
-                android:textColor="@color/disableColor"
                 app:chipCornerRadius="5dp"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
@@ -92,10 +92,9 @@
                 android:text="급식 순서 변경 안내"/>
 
             <com.google.android.material.chip.Chip
-                android:layout_marginRight="48dp"
+                android:id="@+id/menu_chip"
+                android:layout_marginRight="24dp"
                 android:elevation="5dp"
-                app:chipBackgroundColor="@color/chip_item"
-                android:textColor="@color/disableColor"
                 app:chipCornerRadius="5dp"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
@@ -122,6 +121,7 @@
             android:layout_height="wrap_content"/>
 
         <EditText
+            android:id="@+id/notice_write_title_et"
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:hint="공지제목을 입력하세요"
@@ -153,6 +153,7 @@
             android:layout_height="wrap_content"/>
 
         <EditText
+            android:id="@+id/notice_write_context_et"
             android:layout_marginTop="10dp"
             android:padding="10dp"
             android:hint="내용을 입력하세요"

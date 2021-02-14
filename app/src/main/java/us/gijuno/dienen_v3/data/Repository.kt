@@ -92,11 +92,33 @@ class Repository {
         try {
             DienenServiceRequester.postRegister(name, userID, password, verificationkey).let {
                 withContext(Dispatchers.Main) {
-                    Log.d("PostRegister","GG")
+                    when (it) {
+                        200 or 201 -> {
+                            //TODO Success Alert
+                        }
+                        403 -> {
+                            //TODO VerificationKey Dismatch Alert
+                        }
+                        409 -> {
+                            //TODO Used UserID
+                        }
+                    }
                 }
             }
         } catch (e: Exception) {
             Log.d("PostRegister","XX")
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun postLogin(userID: String, password: String) {
+        try {
+            DienenServiceRequester.postLogin(userID, password).let {
+                withContext(Dispatchers.Main) {
+
+                }
+            }
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }

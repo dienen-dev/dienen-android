@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
 import us.gijuno.dienen_v3.R
+import us.gijuno.dienen_v3.data.Keys
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -32,7 +33,6 @@ class HomeFragment : Fragment() {
             //TODO 새로고침하세요 스낵바
             Log.d("HomeFrag", "menu get failed event called")
         }
-
 
 
         homeViewModel.menu.observe(viewLifecycleOwner) { menu ->

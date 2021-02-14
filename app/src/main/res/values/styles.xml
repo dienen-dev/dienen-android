@@ -16,4 +16,8 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
+    <style name="state_button" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@color/state_button</item>
+    </style>
+
 </resources>

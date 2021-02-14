@@ -20,6 +20,10 @@ data class Register (
     val verificationKey: String,
 )
 
+data class Login (
+    val accessToken: String,
+)
+
 data class Meal (val meal: Menu) {
     data class Menu (
         val breakfast: List<String>,
@@ -37,6 +41,13 @@ interface DienenService {
 
     @GET("notice/recent")
     fun getNoticeRecent(): Call<Notice>
+
+    @POST("login")
+    @FormUrlEncoded
+    fun postLogin(
+        @Field("userID") userID: String,
+        @Field("password") password: String
+    ): Call<Login>
 
     @POST("register")
     @FormUrlEncoded
