@@ -9,9 +9,12 @@ import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
@@ -20,6 +23,7 @@ import java.lang.reflect.Type
 
 
 class RegisterActivity : AppCompatActivity() {
+    private var postRegister: Int = 500
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -43,12 +47,26 @@ class RegisterActivity : AppCompatActivity() {
             val password = register_pw_et.text.toString()
             val verificationKey = register_code_et.text.toString()
 
-            GlobalScope.launch {
-                Repository().postRegister(name,userID,password,verificationKey)
+            lifecycleScope.launch(Dispatchers.Main) {
+                withContext(Dispatchers.IO) {
+                    postRegister = Repository().postRegister(name,userID,password,verificationKey)
+                }
+                when (postRegister) {
+                    201 -> {
+                        Toast.createToast(this@RegisterActivity, "회원가입 성공", R.drawable.ic_check).show()
+                        finish()
+                    }
+                    403 -> {
+                        Toast.createToast(this@RegisterActivity, "디넌 인증키 불일치", R.drawable.ic_redx).show()
+                    }
+                    409 -> {
+                        Toast.createToast(this@RegisterActivity, "이미 있는 아이디", R.drawable.ic_redx).show()
+                    }
+                    else -> {
+                        Toast.createToast(this@RegisterActivity, "오류", R.drawable.ic_redx).show()
+                    }
+                }
             }
-
-
-           startActivity(Intent(this, MainActivity::class.java))
         }
 
     }

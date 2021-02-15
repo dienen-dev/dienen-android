@@ -6,6 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import us.gijuno.dienen_v3.EmptyResponse
 import java.lang.Exception
+import kotlin.Exception as Exception1
 
 object DienenServiceRequester {
     private val retrofit = Retrofit.Builder()
@@ -31,7 +32,7 @@ object DienenServiceRequester {
 
     fun postLogin(userID: String, password: String): Int {
         val loginResponse = service.postLogin(userID, password).execute()
-        val accessToken: String = loginResponse.body()?.accessToken ?: ""
+        val accessToken: String = loginResponse.body()?.accessToken ?: throw Exception("Failed Get ACCESS_TOKEN") //TODO 다시 로그인 하세요 Alert 추가
         SharedPreference.prefs.setString(Keys.ACCESS_TOKEN.name, accessToken)
         Log.d("Login Response", loginResponse.code().toString())
         return loginResponse.code()

@@ -5,6 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import us.gijuno.dienen_v3.MainActivity
+import us.gijuno.dienen_v3.R
+import us.gijuno.dienen_v3.Toast
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -88,39 +91,29 @@ class Repository {
         }
     }
 
-    suspend fun postRegister(name: String, userID: String, password: String, verificationkey: String) {
+    private var registerCode: Int = 500
+    fun postRegister(name: String, userID: String, password: String, verificationkey: String): Int {
         try {
             DienenServiceRequester.postRegister(name, userID, password, verificationkey).let {
-                withContext(Dispatchers.Main) {
-                    when (it) {
-                        200 or 201 -> {
-                            //TODO Success Alert
-                        }
-                        403 -> {
-                            //TODO VerificationKey Dismatch Alert
-                        }
-                        409 -> {
-                            //TODO Used UserID
-                        }
-                    }
-                }
+                registerCode = it
             }
         } catch (e: Exception) {
             Log.d("PostRegister","XX")
             e.printStackTrace()
         }
+        return registerCode
     }
 
-    suspend fun postLogin(userID: String, password: String) {
+    private var loginCode: Int = 500
+    fun postLogin(userID: String, password: String): Int {
         try {
             DienenServiceRequester.postLogin(userID, password).let {
-                withContext(Dispatchers.Main) {
-
-                }
+                loginCode = it
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
+        return loginCode
     }
 
 }
