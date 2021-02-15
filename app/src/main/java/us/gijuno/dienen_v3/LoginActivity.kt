@@ -32,13 +32,13 @@ class LoginActivity : AppCompatActivity() {
         login_login_btn.setOnClickListener {
 
             val userID = login_id_et.text.toString()
-            val passowrd = login_pw_et.text.toString()
+            val password = login_pw_et.text.toString()
 
 
 
             lifecycleScope.launch(Dispatchers.Main) {
                 withContext(Dispatchers.IO) {
-                    postLogin = Repository().postLogin(userID,passowrd)
+                    postLogin = Repository().postLogin(userID,password)
                 }
                 when (postLogin) {
                     200 -> {
@@ -50,7 +50,6 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
-
         }
 
         login_goto_register_btn.setOnClickListener() {
