@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
                     postLogin = Repository().postLogin(userID,password)
                 }
                 when (postLogin) {
-                    200 -> {
+                    200, 201 -> {
                         Toast.createToast(this@LoginActivity, "로그인 성공", R.drawable.ic_check).show()
                         finish()
                     }

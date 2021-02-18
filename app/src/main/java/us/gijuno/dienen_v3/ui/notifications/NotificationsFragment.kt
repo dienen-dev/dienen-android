@@ -1,5 +1,6 @@
 package us.gijuno.dienen_v3.ui.notifications
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,8 +10,13 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_notifications.*
+import kotlinx.android.synthetic.main.fragment_notifications.view.*
+import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.notification_recycler_item.view.*
+import us.gijuno.dienen_v3.LoginActivity
 import us.gijuno.dienen_v3.R
+import us.gijuno.dienen_v3.data.LoggedIn
 import us.gijuno.dienen_v3.data.Notice
 import java.util.*
 
@@ -43,7 +49,21 @@ class NotificationsFragment : Fragment() {
             (viewAdapter as MyAdapter).notifyDataSetChanged()
         }
 
+        root.go_to_write_notice_btn.setOnClickListener {
+            startActivity(Intent(context, NoticeWriteActivity::class.java))
+        }
+
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if(LoggedIn().isLoggedIn(LoggedIn().ACCESS_TOKEN)) {
+
+        } else {
+            go_to_write_notice_btn.visibility = View.GONE
+        }
     }
 
     class MyAdapter() :

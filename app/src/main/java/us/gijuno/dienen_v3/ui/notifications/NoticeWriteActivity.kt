@@ -1,12 +1,19 @@
 package us.gijuno.dienen_v3.ui.notifications
 
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_notice_write.*
+import us.gijuno.dienen_v3.Dialog
 import us.gijuno.dienen_v3.R
 
 
@@ -15,6 +22,9 @@ class NoticeWriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_write)
+
+        notice_write_title_et.addTextChangedListener(textWatcher)
+        notice_write_context_et.addTextChangedListener(textWatcher)
 
         write_chip.setOnClickListener {
             notice_write_title_et.setText("")
@@ -36,5 +46,41 @@ class NoticeWriteActivity : AppCompatActivity() {
             notice_write_context_et.setText("로 인하여 급식 매뉴가 아래와 같이 변경됨을 알려드립니다.")
         }
 
+        notice_write_x_btn.setOnClickListener {
+            finish()
+        }
+
+    }
+
+    var textWatcher: TextWatcher = object : TextWatcher {
+        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            if (TextUtils.isEmpty(notice_write_title_et.getText()) || TextUtils.isEmpty(notice_write_context_et.getText())) {
+                notice_write_btn.setEnabled(false)
+                notice_write_btn.setTextColor(ContextCompat.getColor(this@NoticeWriteActivity, R.color.borderColor2))
+
+            } else {
+                notice_write_btn.setEnabled(true)
+                notice_write_btn.setTextColor(ContextCompat.getColor(this@NoticeWriteActivity, R.color.colorPrimary))
+                notice_write_btn.setOnClickListener {
+                    finish() //TODO 레트로핏 노티스 포스트
+                }
+                notice_write_x_btn.setOnClickListener {
+                    val getDialog = Dialog(this@NoticeWriteActivity)
+                    getDialog.setOnOKClickedListener {
+                        finish()
+                    }
+                    getDialog.start("내용이 저장되지 않습니다.\n나가시겠습니까?")
+                }
+            }
+        }
+
+        override fun beforeTextChanged(
+            s: CharSequence, start: Int, count: Int,
+            after: Int
+        ) {
+        }
+
+        override fun afterTextChanged(s: Editable) {
+        }
     }
 }
