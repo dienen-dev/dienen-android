@@ -5,12 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import us.gijuno.dienen_v3.MainActivity
-import us.gijuno.dienen_v3.R
-import us.gijuno.dienen_v3.Toast
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class Repository {
     private val _meal = MutableLiveData<Meal>()
@@ -18,7 +14,7 @@ class Repository {
     val menuGetFailedEvent = SingleLiveEvent<Void>()
     suspend fun getMenu() {
         try {
-            DimibobRequester.getMenu(SimpleDateFormat("yyyy-MM-dd").format(Date()).toString()).let {
+            DimiRequester.getMenu(SimpleDateFormat("yyyy-MM-dd").format(Date()).toString()).let {
                 withContext(Dispatchers.Main) {
                     _meal.value = it
                 }
@@ -36,7 +32,7 @@ class Repository {
         try {
             val cal_ins = Calendar.getInstance()
             cal_ins.add(Calendar.DATE, 1)
-            DimibobRequester.getMenu(SimpleDateFormat("yyyy-MM-dd").format(cal_ins.time).toString()).let {
+            DimiRequester.getMenu(SimpleDateFormat("yyyy-MM-dd").format(cal_ins.time).toString()).let {
                 withContext(Dispatchers.Main) {
                     _meal.value = it
                 }
@@ -48,7 +44,6 @@ class Repository {
                 menuGetFailedEvent.call()
             }
         }
-
     }
 
     private val _notilist = MutableLiveData<List<Notice>>()
@@ -91,6 +86,15 @@ class Repository {
         }
     }
 
+    private val _dimigoinLoginResponse = MutableLiveData<DimigoinAuth>()
+    val dimigoinLoginResponse: LiveData<DimigoinAuth> = _dimigoinLoginResponse
+    val dimigoinLoginResponseGetFailedEvent = SingleLiveEvent<Void>()
+    suspend fun getDimigoinAuth() {
+        DimiRequester.postDimigoinLogin(username = "dimigofrontdev", password = "dimigofrontdev").let {
+
+        }
+    }
+
     private var registerCode: Int = 500
     fun postRegister(name: String, userID: String, password: String, verificationkey: String): Int {
         try {
@@ -114,6 +118,18 @@ class Repository {
             e.printStackTrace()
         }
         return loginCode
+    }
+
+    private var noticeWriteCode: Int = 500
+    fun postNoticeWrite(accessToken: String, title: String, contents: String): Int {
+        try {
+            DienenServiceRequester.postNoticeWrite(accessToken, title, contents).let {
+                noticeWriteCode = it
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return noticeWriteCode
     }
 
 }

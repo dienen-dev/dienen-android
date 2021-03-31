@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="klass">
+        <item>1학년 1반</item>
+        <item>1학년 2반</item>
+        <item>1학년 3반</item>
+        <item>1학년 4반</item>
+        <item>1학년 5반</item>
+        <item>1학년 6반</item>
+        <item>2학년 1반</item>
+        <item>2학년 2반</item>
+        <item>2학년 3반</item>
+        <item>2학년 4반</item>
+        <item>2학년 5반</item>
+        <item>2학년 6반</item>
+    </string-array>
+</resources>

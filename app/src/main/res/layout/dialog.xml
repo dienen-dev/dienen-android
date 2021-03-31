@@ -4,32 +4,55 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:background="@drawable/round_for_dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="8dp"
-        >
+        android:orientation="vertical">
+
         <TextView
+            android:layout_marginRight="23dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:text="텍스트"/>
+            android:text="asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf"/>
 
         <LinearLayout
+            android:background="@color/disableBox"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></LinearLayout>
+        
+        <LinearLayout
+            android:layout_marginBottom="1dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
+                android:background="@color/white"
+                android:fontFamily="@font/noto_regular"
+                android:textSize="13sp"
+                android:textColor="@color/blackColor"
                 android:id="@+id/cancel"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:text="취소"/>
 
-            <Button
+            <LinearLayout
+                android:background="@color/disableBox"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"></LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:background="@color/white"
+                android:fontFamily="@font/noto_regular"
+                android:textSize="13sp"
+                android:textColor="@color/colorPrimary"
                 android:id="@+id/ok"
                 android:layout_width="0dp"
                 android:layout_height="40dp"

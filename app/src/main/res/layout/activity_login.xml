@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    android:scrollbars="none"
     tools:context=".LoginActivity">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:src="@drawable/ic_dienen_logo" />
-
-
-    <LinearLayout
-        android:id="@+id/loginMainLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/ic_dienen_logo" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:orientation="vertical"
             android:paddingLeft="52dp"
             android:paddingRight="52dp">
@@ -88,21 +88,21 @@
             </LinearLayout>
 
             <Button
-                app:rippleColor="#C8C8C8"
-                android:padding="13dp"
-                app:cornerRadius="23.5dp"
-                app:strokeWidth="2dp"
-                app:strokeColor="@color/colorPrimary"
                 android:id="@+id/login_login_btn"
+                style="@style/state_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                style="@style/state_button"
+                android:enabled="false"
+                android:padding="13dp"
                 android:text="로그인"
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
-                android:enabled="false"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:cornerRadius="23.5dp"
+                app:rippleColor="#C8C8C8"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="2dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,10 +119,10 @@
                     android:textSize="12dp" />
 
                 <TextView
-                    android:clickable="true"
                     android:id="@+id/login_goto_register_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:clickable="true"
                     android:text="회원가입 하기"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12dp" />
@@ -131,6 +131,7 @@
 
         </LinearLayout>
 
-    </LinearLayout>
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

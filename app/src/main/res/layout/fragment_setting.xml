@@ -97,6 +97,7 @@
                 android:layout_height="wrap_content"/>
 
             <LinearLayout
+                android:orientation="horizontal"
                 android:elevation="4dp"
                 android:background="@drawable/round_layout"
                 android:layout_marginLeft="24dp"
@@ -106,10 +107,11 @@
                 android:layout_height="wrap_content">
 
                 <Spinner
-                    android:id="@+id/spinner"
-                    android:background="@null"
+                    android:id="@+id/settingSpinner"
+                    android:background="@drawable/ic_spinner_setting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
 
             </LinearLayout>
 

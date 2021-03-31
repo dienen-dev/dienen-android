@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6BBBB2</color>
-    <color name="colorPrimary10per">#E6F9F9</color>
-    <color name="colorPrimaryDark">#6BBBB2</color>
+    <color name="colorPrimary">#50C794</color>
+    <color name="colorPrimary10per">#EDF9F4</color>
+    <color name="colorPrimaryDark">#50C794</color>
     <color name="bodyColor">#888888</color>
     <color name="disableColor">#999999</color>
     <color name="blackColor">#222222</color>

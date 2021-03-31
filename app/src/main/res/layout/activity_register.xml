@@ -1,260 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:orientation="vertical">
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    tools:context=".LoginActivity">
 
     <RelativeLayout
-        android:layout_above="@+id/asdf"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_centerInParent="true"
-            android:layout_marginTop="70dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_dienen_logo"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/asdf">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp"
+                android:src="@drawable/ic_dienen_logo" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/asdf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/noto_black"
+                android:text="새 계정 만들기"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="11dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/noto_medium"
+                    android:text="성명"
+                    android:textColor="@color/blackColor"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:background="@drawable/round_edittext_10"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <EditText
+                        android:id="@+id/register_name_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/noto_medium"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="11dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/noto_medium"
+                    android:text="아이디"
+                    android:textColor="@color/blackColor"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:background="@drawable/round_edittext_10"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <EditText
+                        android:id="@+id/register_id_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/noto_medium"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="11dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/noto_medium"
+                    android:text="비밀번호"
+                    android:textColor="@color/blackColor"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:background="@drawable/round_edittext_10"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <EditText
+                        android:id="@+id/register_pw_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/noto_medium"
+                        android:inputType="textPassword"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="11dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/noto_medium"
+                    android:text="인증코드"
+                    android:textColor="@color/blackColor"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:background="@drawable/round_edittext_10"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <EditText
+                        android:id="@+id/register_code_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/noto_medium"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_regular"
+                    android:text="회원가입시 "
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_regular"
+                    android:text="개인정보 보관"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_regular"
+                    android:text=" 및 "
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_regular"
+                    android:text="웅앵약관"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_regular"
+                    android:text="에 동의합니다"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/register_register_btn"
+                style="@style/state_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65.5dp"
+                android:layout_marginRight="65.5dp"
+                android:layout_marginBottom="40dp"
+                android:enabled="false"
+                android:fontFamily="@font/noto_bold"
+                android:padding="13dp"
+                android:text="회원가입"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="23.5dp"
+                app:rippleColor="#C8C8C8"
+                app:strokeColor="@color/colorPrimary"
+                app:strokeWidth="2dp" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
-
-
-
-    <LinearLayout
-        android:id="@+id/asdf"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
-
-        <TextView
-            android:fontFamily="@font/noto_black"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#000"
-            android:layout_marginBottom="24dp"
-            android:text="새 계정 만들기"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <LinearLayout
-            android:layout_marginBottom="11dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:fontFamily="@font/noto_medium"
-                android:textSize="14sp"
-                android:textColor="@color/blackColor"
-                android:layout_marginBottom="3dp"
-                android:text="성명"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:background="@drawable/round_edittext_10"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
-
-                <EditText
-                    android:fontFamily="@font/noto_medium"
-                    android:id="@+id/register_name_et"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginBottom="11dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:fontFamily="@font/noto_medium"
-                android:textSize="14sp"
-                android:textColor="@color/blackColor"
-                android:layout_marginBottom="3dp"
-                android:text="아이디"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:background="@drawable/round_edittext_10"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
-
-                <EditText
-                    android:fontFamily="@font/noto_medium"
-                    android:id="@+id/register_id_et"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginBottom="11dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:fontFamily="@font/noto_medium"
-                android:textSize="14sp"
-                android:textColor="@color/blackColor"
-                android:layout_marginBottom="3dp"
-                android:text="비밀번호"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:background="@drawable/round_edittext_10"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
-
-                <EditText
-                    android:fontFamily="@font/noto_medium"
-                    android:id="@+id/register_pw_et"
-                    android:inputType="textPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginBottom="11dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:fontFamily="@font/noto_medium"
-                android:textSize="14sp"
-                android:textColor="@color/blackColor"
-                android:layout_marginBottom="3dp"
-                android:text="인증코드"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="47dp"
-                android:background="@drawable/round_edittext_10"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
-
-                <EditText
-                    android:fontFamily="@font/noto_medium"
-                    android:id="@+id/register_code_et"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginBottom="24dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:fontFamily="@font/noto_regular"
-                android:textSize="12sp"
-                android:text="회원가입시 "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:fontFamily="@font/noto_regular"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:text="개인정보 보관"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:fontFamily="@font/noto_regular"
-                android:textSize="12sp"
-                android:text=" 및 "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:fontFamily="@font/noto_regular"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:text="웅앵약관"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:fontFamily="@font/noto_regular"
-                android:textSize="12sp"
-                android:text="에 동의합니다"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-        <Button
-            android:padding="13dp"
-            app:rippleColor="#C8C8C8"
-            app:cornerRadius="23.5dp"
-            app:strokeWidth="2dp"
-            app:strokeColor="@color/colorPrimary"
-            android:fontFamily="@font/noto_bold"
-            android:layout_marginBottom="40dp"
-            android:enabled="false"
-            android:textStyle="bold"
-            style="@style/state_button"
-            android:id="@+id/register_register_btn"
-            android:layout_marginLeft="65.5dp"
-            android:layout_marginRight="65.5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="회원가입"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+</ScrollView>

@@ -9,16 +9,27 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_notice_write.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import us.gijuno.dienen_v3.Dialog
 import us.gijuno.dienen_v3.R
+import us.gijuno.dienen_v3.data.Keys
+import us.gijuno.dienen_v3.data.Repository
+import us.gijuno.dienen_v3.data.SharedPreference
 
 
 class NoticeWriteActivity : AppCompatActivity() {
-
+    private var postNoticeWrite: Int = 500
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notice_write)
@@ -62,7 +73,9 @@ class NoticeWriteActivity : AppCompatActivity() {
                 notice_write_btn.setEnabled(true)
                 notice_write_btn.setTextColor(ContextCompat.getColor(this@NoticeWriteActivity, R.color.colorPrimary))
                 notice_write_btn.setOnClickListener {
-                    finish() //TODO 레트로핏 노티스 포스트
+                    //TODO 레트로핏 노티스 포스트
+                    noticeWrite()
+
                 }
                 notice_write_x_btn.setOnClickListener {
                     val getDialog = Dialog(this@NoticeWriteActivity)
@@ -83,4 +96,28 @@ class NoticeWriteActivity : AppCompatActivity() {
         override fun afterTextChanged(s: Editable) {
         }
     }
+
+    fun noticeWrite() {
+        val accessToken = SharedPreference.prefs.getString(Keys.ACCESS_TOKEN.name, "")
+        val title: String = notice_write_title_et.text.toString()
+        val contents: String = notice_write_context_et.text.toString()
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
+                postNoticeWrite = Repository().postNoticeWrite(accessToken, title, contents)
+            }
+            when(postNoticeWrite) {
+                200 -> {
+                    us.gijuno.dienen_v3.Toast.createToast(this@NoticeWriteActivity, "공지 작성 성공", R.drawable.ic_check).show()
+                    finish()
+                    NotificationsFragment().onResume()
+                }
+                500 -> {
+                    us.gijuno.dienen_v3.Toast.createToast(this@NoticeWriteActivity, "공지 작성 실패", R.drawable.ic_redx).show()
+                }
+            }
+        }
+    }
+
+
 }

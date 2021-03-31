@@ -12,10 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_notifications.*
 import kotlinx.android.synthetic.main.fragment_notifications.view.*
-import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.notification_recycler_item.view.*
-import us.gijuno.dienen_v3.LoginActivity
 import us.gijuno.dienen_v3.R
+import us.gijuno.dienen_v3.Toast
 import us.gijuno.dienen_v3.data.LoggedIn
 import us.gijuno.dienen_v3.data.Notice
 import java.util.*
@@ -41,7 +40,7 @@ class NotificationsFragment : Fragment() {
 
         notificationsViewModel.notilistGetFailedEvent.observe(viewLifecycleOwner) {
             Log.d("NotificationFragment", "Server Err")
-            //스낵바나 토스트로 알림
+            Toast.createToast(this.requireContext(), "공지 불러오기 실패", R.drawable.ic_redx).show()
         }
 
         notificationsViewModel.notilist.observe(viewLifecycleOwner) {
@@ -53,16 +52,20 @@ class NotificationsFragment : Fragment() {
             startActivity(Intent(context, NoticeWriteActivity::class.java))
         }
 
+
         return root
     }
 
     override fun onResume() {
         super.onResume()
 
-        if(LoggedIn().isLoggedIn(LoggedIn().ACCESS_TOKEN)) {
+        when {
+            LoggedIn().isLoggedIn(LoggedIn().ACCESS_TOKEN) -> {
 
-        } else {
-            go_to_write_notice_btn.visibility = View.GONE
+            }
+            else -> {
+                go_to_write_notice_btn.visibility = View.GONE
+            }
         }
     }
 
@@ -110,7 +113,7 @@ class NotificationsFragment : Fragment() {
                         ?: throw IllegalStateException("notifyCreatedAt not following ISO time format: $notifyCreatedAt")
 
                 val mealTime: String =
-                    when (val time = "%d%2d".format(hour, minute).toInt() % 2400) {
+                    when (val time = "%d%02d".format(hour, minute).toInt() % 2400) {
                         in 0..800 -> "아침"
                         in 801..1350 -> "점심"
                         in 1351..2359 -> "저녁"

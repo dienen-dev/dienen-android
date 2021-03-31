@@ -32,6 +32,30 @@ data class Meal (val meal: Menu) {
     )
 }
 
+data class NoticeWrite(
+    val title: String,
+    val contents: String,
+)
+
+data class DimigoinLogin(
+    val username: String,
+    val password: String,
+)
+
+data class DimigoinAuth(
+    val accessToken: String,
+    val refreshToken: String,
+)
+
+data class Students(
+    val name: List<String>,
+    val userType: List<String>,
+    val grade: List<String>,
+    val klass: List<String>,
+    val number: List<String>,
+    val serial: List<String>,
+)
+
 
 
 interface DienenService {
@@ -57,6 +81,14 @@ interface DienenService {
         @Field("password") password: String,
         @Field("verificationKey") verificationKey: String
     ): Call<Register>
+
+    @POST("writenotice")
+    @FormUrlEncoded
+    fun postNoticeWrite(
+        @Header("x-access-dienen") accessToken: String,
+        @Field("title") title: String,
+        @Field("context") contents: String
+    ): Call<NoticeWrite>
 }
 
 interface Dimibob {
@@ -64,3 +96,11 @@ interface Dimibob {
     fun getMenu(@Path("date") date: String): Call<Meal>
 }
 
+interface Dimigoin {
+    @POST("auth")
+    @FormUrlEncoded
+    fun postDimigoinLogin(
+        @Field("username") name: String,
+        @Field("password") password: String
+    ): Call<DimigoinAuth>
+}

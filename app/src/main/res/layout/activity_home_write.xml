@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".ui.setting.SettingFragment"
+    android:paddingTop="40dp">
+
+    <TextView
+        android:layout_marginLeft="24dp"
+        android:textColor="@color/blackColor"
+        android:text="급식 순서 변경"
+        android:textSize="24sp"
+        android:fontFamily="@font/noto_black"
+        android:layout_marginBottom="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="학년"
+            android:textSize="14sp"
+            android:textColor="@color/blackColor"
+            android:fontFamily="@font/noto_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:checkedChip="@+id/first_1"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:textSize="12sp"
+                android:id="@+id/first_1"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="5dp"
+                android:text="1학년"
+                app:chipCornerRadius="5dp" />
+
+            <com.google.android.material.chip.Chip
+                android:textSize="12sp"
+                android:id="@+id/first_2"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="5dp"
+                android:text="2학년"
+                app:chipCornerRadius="5dp" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="처음 반"
+            android:textSize="14sp"
+            android:textColor="@color/blackColor"
+            android:fontFamily="@font/noto_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/home_write_first_klass"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ic_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="간격"
+            android:textSize="14sp"
+            android:textColor="@color/blackColor"
+            android:fontFamily="@font/noto_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:fontFamily="@font/noto_medium"
+                android:textSize="12sp"
+                android:padding="10dp"
+                android:background="@drawable/round_edittext_10"
+                android:hint="숫자만 입력"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginLeft="3dp"
+                android:gravity="center"
+                android:fontFamily="@font/noto_black"
+                android:textSize="13sp"
+                android:text="분"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

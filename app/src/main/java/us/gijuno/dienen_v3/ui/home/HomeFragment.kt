@@ -1,5 +1,6 @@
 package us.gijuno.dienen_v3.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,8 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_notifications.view.*
 import us.gijuno.dienen_v3.R
 import us.gijuno.dienen_v3.data.Keys
+import us.gijuno.dienen_v3.data.SharedPreference
+import us.gijuno.dienen_v3.ui.notifications.NoticeWriteActivity
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -34,6 +39,8 @@ class HomeFragment : Fragment() {
             Log.d("HomeFrag", "menu get failed event called")
         }
 
+
+        Log.d("asdf", Keys.ACCESS_TOKEN.toString())
 
         homeViewModel.menu.observe(viewLifecycleOwner) { menu ->
             val min = Calendar.getInstance().get(Calendar.MINUTE)
@@ -71,6 +78,12 @@ class HomeFragment : Fragment() {
             noti_idk.text = "서버 펑 .."
             Log.d("HomeFrag", "notice recent get failed event called")
         }
+
+        root.order_layout.setOnClickListener {
+            startActivity(Intent(context, MealOrderActivity::class.java))
+        }
+
+        SharedPreference.prefs.getString("email", "no email")
 
         return root
     }

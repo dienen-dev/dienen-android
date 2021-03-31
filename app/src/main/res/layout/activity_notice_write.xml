@@ -50,58 +50,58 @@
         android:layout_height="1dp"></LinearLayout>
 
     <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:overScrollMode="never"
-        android:scrollbarSize="0dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:scrollbarSize="0dp">
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/notice_write_chipGroup"
-            app:singleSelection="true"
-            app:selectionRequired="true"
-            app:checkedChip="@+id/write_chip"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:checkedChip="@+id/write_chip"
+            app:selectionRequired="true"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/write_chip"
-                android:layout_marginLeft="24dp"
-                android:elevation="5dp"
-                app:chipCornerRadius="5dp"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="직접 입력"/>
+                android:layout_marginLeft="24dp"
+                android:elevation="5dp"
+                android:text="직접 입력"
+                app:chipCornerRadius="5dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/late_chip"
-                android:elevation="5dp"
-                app:chipCornerRadius="5dp"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="급식 지연 안내"/>
+                android:elevation="5dp"
+                android:text="급식 지연 안내"
+                app:chipCornerRadius="5dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/change_chip"
-                android:elevation="5dp"
-                app:chipCornerRadius="5dp"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="급식 순서 변경 안내"/>
+                android:elevation="5dp"
+                android:text="급식 순서 변경 안내"
+                app:chipCornerRadius="5dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/menu_chip"
-                android:layout_marginRight="24dp"
-                android:elevation="5dp"
-                app:chipCornerRadius="5dp"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="급식 메뉴 변경 안내"/>
+                android:layout_marginRight="24dp"
+                android:elevation="5dp"
+                android:text="급식 메뉴 변경 안내"
+                app:chipCornerRadius="5dp" />
 
         </com.google.android.material.chip.ChipGroup>
 
