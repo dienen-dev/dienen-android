@@ -1,117 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
-    tools:context=".ui.home.HomeFragment"
-    android:paddingTop="40dp">
+    android:id="@+id/home_refresh_layout"
+    tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/n_bun"
-        android:layout_marginLeft="24dp"
-        android:textColor="@color/blackColor"
-        android:text="3분 남았습니다"
-        android:textSize="24sp"
-        android:fontFamily="@font/noto_black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/my_grade_class"
-        android:layout_marginLeft="24dp"
-        android:text="1학년 2반"
-        android:textSize="18sp"
-        android:fontFamily="@font/noto_bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <ScrollView
-        android:scrollbars="none"
-        android:overScrollMode="never"
-        android:layout_marginTop="20dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
 
-        <LinearLayout
+        <TextView
+            android:layout_marginTop="40dp"
+            android:id="@+id/n_bun"
+            android:layout_marginLeft="24dp"
+            android:textColor="@color/blackColor"
+            android:text="3분 남았습니다"
+            android:textSize="24sp"
+            android:fontFamily="@font/noto_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/my_grade_class"
+            android:layout_marginLeft="24dp"
+            android:text="1학년 2반"
+            android:textSize="18sp"
+            android:fontFamily="@font/noto_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ScrollView
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:text="급식 순서"
-                android:textSize="18sp"
-                android:textColor="@color/blackColor"
-                android:fontFamily="@font/noto_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/order_layout"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:elevation="5dp"
-                android:background="@drawable/round_layout"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:text="급식 순서"
+                    android:textSize="18sp"
+                    android:textColor="@color/blackColor"
+                    android:fontFamily="@font/noto_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
                 <LinearLayout
-                    android:orientation="horizontal"
+                    android:id="@+id/order_layout"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:elevation="5dp"
+                    android:background="@drawable/round_layout"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:text="1학년 2반"
+                            android:textColor="@color/disableColor"
+                            android:fontFamily="@font/noto_medium"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:background="@color/colorPrimary10per"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:text="1학년 2반"
+                            android:textColor="@color/colorPrimary"
+                            android:fontFamily="@font/noto_medium"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:text="1학년 2반"
+                            android:textColor="@color/disableColor"
+                            android:fontFamily="@font/noto_medium"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/home_next_meal_text"
+                    android:layout_marginLeft="24dp"
+                    android:text="다음 급식"
+                    android:textSize="18sp"
+                    android:textColor="@color/blackColor"
+                    android:fontFamily="@font/noto_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:id="@+id/home_next_meal_layout"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:elevation="5dp"
+                    android:background="@drawable/round_layout"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="1학년 2반"
-                        android:textColor="@color/disableColor"
+                        android:textColor="@color/blackColor"
+                        android:id="@+id/menu_mola"
+                        android:text="불러오늘 중 . . ."
                         android:fontFamily="@font/noto_medium"
                         android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:background="@color/colorPrimary10per"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
                     <TextView
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="1학년 2반"
-                        android:textColor="@color/colorPrimary"
-                        android:fontFamily="@font/noto_medium"
-                        android:textSize="16sp"
+                        android:id="@+id/menu_idk"
+                        android:layout_marginTop="3dp"
+                        android:text="불러오늘 중 . . ."
+                        android:fontFamily="@font/noto_regular"
+                        android:textSize="12sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/home_noti_text"
+                    android:layout_marginLeft="24dp"
+                    android:text="공지사항"
+                    android:textSize="18sp"
+                    android:textColor="@color/blackColor"
+                    android:fontFamily="@font/noto_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
                 <LinearLayout
-                    android:orientation="horizontal"
+                    android:id="@+id/home_noti_layout"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingTop="15dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:elevation="5dp"
+                    android:background="@drawable/round_layout"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:text="1학년 2반"
-                        android:textColor="@color/disableColor"
+                        android:textColor="@color/blackColor"
+                        android:id="@+id/noti_mola"
+                        android:text="불러오늘 중 . . ."
                         android:fontFamily="@font/noto_medium"
                         android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/noti_idk"
+                        android:layout_marginTop="3dp"
+                        android:text="불러오늘 중 . . ."
+                        android:fontFamily="@font/noto_regular"
+                        android:textSize="12sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -119,98 +219,8 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/home_next_meal_text"
-                android:layout_marginLeft="24dp"
-                android:text="다음 급식"
-                android:textSize="18sp"
-                android:textColor="@color/blackColor"
-                android:fontFamily="@font/noto_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        </ScrollView>
 
-            <LinearLayout
-                android:id="@+id/home_next_meal_layout"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="20dp"
-                android:paddingTop="15dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="20dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginLeft="24dp"
-                android:elevation="5dp"
-                android:background="@drawable/round_layout"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+    </LinearLayout>
 
-                <TextView
-                    android:id="@+id/menu_mola"
-                    android:text="불러오늘 중 . . ."
-                    android:fontFamily="@font/noto_medium"
-                    android:textSize="16sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/menu_idk"
-                    android:layout_marginTop="3dp"
-                    android:text="불러오늘 중 . . ."
-                    android:fontFamily="@font/noto_regular"
-                    android:textSize="12sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/home_noti_text"
-                android:layout_marginLeft="24dp"
-                android:text="공지사항"
-                android:textSize="18sp"
-                android:textColor="@color/blackColor"
-                android:fontFamily="@font/noto_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:id="@+id/home_noti_layout"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="20dp"
-                android:paddingTop="15dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="20dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginLeft="24dp"
-                android:elevation="5dp"
-                android:background="@drawable/round_layout"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/noti_mola"
-                    android:text="불러오늘 중 . . ."
-                    android:fontFamily="@font/noto_medium"
-                    android:textSize="16sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/noti_idk"
-                    android:layout_marginTop="3dp"
-                    android:text="불러오늘 중 . . ."
-                    android:fontFamily="@font/noto_regular"
-                    android:textSize="12sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-</LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

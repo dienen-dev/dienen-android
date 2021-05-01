@@ -2,11 +2,14 @@ package us.gijuno.dienen_v3.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -31,7 +34,6 @@ class HomeFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-
         homeViewModel.menuGetFailedEvent.observe(viewLifecycleOwner) {
             menu_mola.text = "급식 정보가 없습니다"
             menu_idk.text = "급식 정보가 없습니다"
@@ -39,9 +41,37 @@ class HomeFragment : Fragment() {
             Log.d("HomeFrag", "menu get failed event called")
         }
 
+        root.home_refresh_layout.setOnRefreshListener {
+//            refreshFragment(this)
+            getDatas()
+            Handler().postDelayed({
+                root.home_refresh_layout.isRefreshing = false
+            }, 1000)
+        }
+
+
+        root.order_layout.setOnClickListener {
+            startActivity(Intent(context, MealOrderActivity::class.java))
+        }
+
+        val klassArray = resources.getStringArray(R.array.klass)
+        val myIndex = SharedPreference.prefs.getString("myIndex", "0").toInt()
+
+        val myklass = klassArray.get(myIndex)
+        root.my_grade_class.text = myklass
 
         Log.d("asdf", Keys.ACCESS_TOKEN.toString())
 
+
+        return root
+    }
+
+    private fun refreshFragment(fragment: Fragment) {
+        val ft: FragmentTransaction = requireFragmentManager().beginTransaction()
+        ft.detach(fragment).attach(fragment).commit()
+    }
+
+    private fun getDatas() {
         homeViewModel.menu.observe(viewLifecycleOwner) { menu ->
             val min = Calendar.getInstance().get(Calendar.MINUTE)
             val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
@@ -79,12 +109,6 @@ class HomeFragment : Fragment() {
             Log.d("HomeFrag", "notice recent get failed event called")
         }
 
-        root.order_layout.setOnClickListener {
-            startActivity(Intent(context, MealOrderActivity::class.java))
-        }
 
-        SharedPreference.prefs.getString("email", "no email")
-
-        return root
     }
 }

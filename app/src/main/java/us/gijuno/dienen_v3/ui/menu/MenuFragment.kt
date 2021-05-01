@@ -32,6 +32,7 @@ class MenuFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_menu, container, false)
 
+//        Skeleton.bind(menu_ahchim_layout).load()
 
         menuViewModel.menuGetFailedEvent.observe(viewLifecycleOwner) {
             when (compareTime) {
@@ -100,4 +101,6 @@ class MenuFragment : Fragment() {
         val yoil = "일월화수목금토"[dayOfWeek%7]
         menu_today_date.text = SimpleDateFormat("yyyy-MM-dd").format(cal_ins.time) + " ${yoil}요일"
     }
+
+
 }

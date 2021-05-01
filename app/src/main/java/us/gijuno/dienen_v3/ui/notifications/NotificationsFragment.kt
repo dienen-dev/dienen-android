@@ -113,7 +113,7 @@ class NotificationsFragment : Fragment() {
                         ?: throw IllegalStateException("notifyCreatedAt not following ISO time format: $notifyCreatedAt")
 
                 val mealTime: String =
-                    when (val time = "%d%02d".format(hour, minute).toInt() % 2400) {
+                    when (val time = "%d%02d".format(hour, minute).toInt() % 2400 + 900) {
                         in 0..800 -> "아침"
                         in 801..1350 -> "점심"
                         in 1351..2359 -> "저녁"
