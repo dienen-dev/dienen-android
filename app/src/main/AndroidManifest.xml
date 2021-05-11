@@ -14,13 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity"/>
+        <activity
+            android:name=".AdminActivity"
+            android:exported="true" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".ui.home.MealOrderActivity" />
         <activity android:name=".ui.home.HomeWriteActivity" />
         <activity android:name=".ui.notifications.NoticeWriteActivity" />
-        <activity android:name=".LoginActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".RegisterActivity"
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".RegisterActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".SplashActivity"

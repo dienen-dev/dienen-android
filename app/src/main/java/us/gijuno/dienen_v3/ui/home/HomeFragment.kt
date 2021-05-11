@@ -34,15 +34,14 @@ class HomeFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
+        getDatas()
         homeViewModel.menuGetFailedEvent.observe(viewLifecycleOwner) {
             menu_mola.text = "급식 정보가 없습니다"
             menu_idk.text = "급식 정보가 없습니다"
-            //TODO 새로고침하세요 스낵바
             Log.d("HomeFrag", "menu get failed event called")
         }
 
         root.home_refresh_layout.setOnRefreshListener {
-//            refreshFragment(this)
             getDatas()
             Handler().postDelayed({
                 root.home_refresh_layout.isRefreshing = false
@@ -64,11 +63,6 @@ class HomeFragment : Fragment() {
 
 
         return root
-    }
-
-    private fun refreshFragment(fragment: Fragment) {
-        val ft: FragmentTransaction = requireFragmentManager().beginTransaction()
-        ft.detach(fragment).attach(fragment).commit()
     }
 
     private fun getDatas() {

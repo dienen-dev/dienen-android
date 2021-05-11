@@ -2,14 +2,19 @@ package us.gijuno.dienen_v3.ui.notifications
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_menu.view.*
 import kotlinx.android.synthetic.main.fragment_notifications.*
 import kotlinx.android.synthetic.main.fragment_notifications.view.*
 import kotlinx.android.synthetic.main.notification_recycler_item.view.*
@@ -43,18 +48,29 @@ class NotificationsFragment : Fragment() {
             Toast.createToast(this.requireContext(), "공지 불러오기 실패", R.drawable.ic_redx).show()
         }
 
+        root.noti_refresh_layout.setOnRefreshListener {
+//            getDatas()
+            Handler().postDelayed({
+                root.noti_refresh_layout.isRefreshing = false
+            }, 1000)
+        }
+
         notificationsViewModel.notilist.observe(viewLifecycleOwner) {
             (viewAdapter as MyAdapter).setItem(it)
             (viewAdapter as MyAdapter).notifyDataSetChanged()
         }
+
 
         root.go_to_write_notice_btn.setOnClickListener {
             startActivity(Intent(context, NoticeWriteActivity::class.java))
         }
 
 
+
         return root
     }
+
+
 
     override fun onResume() {
         super.onResume()
@@ -69,7 +85,7 @@ class NotificationsFragment : Fragment() {
         }
     }
 
-    class MyAdapter() :
+    class MyAdapter :
         RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
         private var items: List<Notice> = arrayListOf()
 

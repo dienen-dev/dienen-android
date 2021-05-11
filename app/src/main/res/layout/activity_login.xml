@@ -52,6 +52,7 @@
                     android:src="@drawable/ic_person_icon" />
 
                 <EditText
+                    android:fontFamily="@font/noto_medium"
                     android:id="@+id/login_id_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,6 +81,7 @@
                     android:src="@drawable/ic_lock_icon" />
 
                 <EditText
+                    android:fontFamily="@font/noto_medium"
                     android:id="@+id/login_pw_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -93,6 +95,7 @@
             </LinearLayout>
 
             <Button
+                android:fontFamily="@font/noto_bold"
                 android:id="@+id/login_login_btn"
                 style="@style/state_button"
                 android:layout_width="match_parent"
@@ -116,6 +119,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/noto_regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
@@ -124,6 +128,7 @@
                     android:textSize="12dp" />
 
                 <TextView
+                    android:fontFamily="@font/noto_medium"
                     android:id="@+id/login_goto_register_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

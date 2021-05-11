@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/noti_refresh_layout"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".ui.setting.SettingFragment">
+    tools:context=".ui.notifications.NoticeWriteActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,11 +50,11 @@
                 android:layout_height="wrap_content"/>
 
             <ImageView
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/ic_right_arrow"
                 android:layout_width="10dp"
-                android:layout_height="10dp"/>
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_right_arrow" />
 
 
         </RelativeLayout>

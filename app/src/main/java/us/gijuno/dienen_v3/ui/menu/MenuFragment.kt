@@ -1,6 +1,7 @@
 package us.gijuno.dienen_v3.ui.menu
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_menu.*
+import kotlinx.android.synthetic.main.fragment_menu.view.*
 import us.gijuno.dienen_v3.R
 import us.gijuno.dienen_v3.data.Meal
 import java.text.SimpleDateFormat
@@ -31,8 +34,7 @@ class MenuFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_menu, container, false)
-
-//        Skeleton.bind(menu_ahchim_layout).load()
+        getDatas()
 
         menuViewModel.menuGetFailedEvent.observe(viewLifecycleOwner) {
             when (compareTime) {
@@ -49,6 +51,17 @@ class MenuFragment : Fragment() {
             Log.d("HomeFrag", "menu get failed event called")
         }
 
+        root.menu_refresh_layout.setOnRefreshListener {
+            getDatas()
+            Handler().postDelayed({
+                root.menu_refresh_layout.isRefreshing = false
+            }, 1000)
+        }
+
+        return root
+    }
+
+    private fun getDatas() {
         menuViewModel.menu.observe(viewLifecycleOwner) { meal ->
             when (compareTime) {
                 in 0..800 -> {
@@ -78,8 +91,6 @@ class MenuFragment : Fragment() {
                 }
             }
         }
-
-        return root
     }
 
     fun showTodayMenu(meal: Meal) {

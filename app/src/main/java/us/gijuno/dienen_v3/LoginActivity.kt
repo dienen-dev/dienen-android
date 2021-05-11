@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
             val userID = login_id_et.text.toString()
             val password = login_pw_et.text.toString()
 
-            val test = Integer.parseInt(findViewById<EditText>(R.id.login_id_et).text.toString())
+//            val test = Integer.parseInt(findViewById<EditText>(R.id.login_id_et).text.toString())
 
             lifecycleScope.launch(Dispatchers.Main) {
                 withContext(Dispatchers.IO) {
