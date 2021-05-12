@@ -73,9 +73,11 @@ class NoticeWriteActivity : AppCompatActivity() {
                 notice_write_btn.setEnabled(true)
                 notice_write_btn.setTextColor(ContextCompat.getColor(this@NoticeWriteActivity, R.color.colorPrimary))
                 notice_write_btn.setOnClickListener {
-                    //TODO 레트로핏 노티스 포스트
+                    //TODO 파베 노티스 포스트
                     noticeWrite()
-
+                    //한번만 눌러주세요
+                    notice_write_btn.setEnabled(false)
+                    notice_write_btn.setTextColor(ContextCompat.getColor(this@NoticeWriteActivity, R.color.borderColor2))
                 }
                 notice_write_x_btn.setOnClickListener {
                     val getDialog = Dialog(this@NoticeWriteActivity)

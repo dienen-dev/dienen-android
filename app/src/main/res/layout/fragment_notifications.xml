@@ -1,53 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/noti_refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/noti_refresh_layout"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".ui.notifications.NoticeWriteActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
-            android:textColor="@color/blackColor"
-            android:text="공지사항"
-            android:textSize="24sp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/noto_black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:text="공지사항"
+            android:textColor="@color/blackColor"
+            android:textSize="24sp" />
 
         <RelativeLayout
             android:id="@+id/go_to_write_notice_btn"
-            android:layout_marginTop="20dp"
-            android:elevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="24dp"
             android:background="@drawable/round_layout"
-            android:paddingLeft="20dp"
-            android:padding="10dp"
-            android:foreground="?attr/selectableItemBackground"
             android:clickable="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:elevation="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:padding="10dp"
+            android:paddingLeft="20dp">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:textSize="14sp"
                 android:fontFamily="@font/noto_medium"
                 android:text="공지사항 작성하기"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="10dp"
@@ -59,16 +58,23 @@
 
         </RelativeLayout>
 
-
+        <ProgressBar
+            android:id="@+id/noti_list_prograss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:indeterminateTint="@color/colorPrimary" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:overScrollMode="never"
-            android:layout_marginTop="25dp"
             android:id="@+id/notification_recycler"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout>
 

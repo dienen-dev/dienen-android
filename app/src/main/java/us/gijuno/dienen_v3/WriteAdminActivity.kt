@@ -1,6 +1,8 @@
 package us.gijuno.dienen_v3
 
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -10,7 +12,6 @@ import android.util.Log
 import androidx.core.content.ContextCompat
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.activity_register.register_register_btn
 import kotlinx.android.synthetic.main.activity_write_admin.*
 import okhttp3.ResponseBody
 import retrofit2.Converter
@@ -18,8 +19,6 @@ import retrofit2.Retrofit
 import us.gijuno.dienen_v3.data.Warning
 import java.lang.reflect.Type
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class WriteAdminActivity : AppCompatActivity() {
@@ -33,6 +32,10 @@ class WriteAdminActivity : AppCompatActivity() {
         write_admin_content.addTextChangedListener(textWatcher)
 
         write_admin_btn.setOnClickListener {
+            //한번만 눌러주세요
+            write_admin_btn.setEnabled(false)
+            write_admin_btn.setTextColor(ContextCompat.getColor(this@WriteAdminActivity, R.color.colorPrimary))
+
             val num = write_admin_num.text.toString()
             val name = write_admin_name.text.toString()
             val content = write_admin_content.text.toString()
@@ -46,13 +49,30 @@ class WriteAdminActivity : AppCompatActivity() {
             warningUser.date = date_time
             warningUser.content = content
 
-            var addFirestore = fireStore.collection("warning").document("${warningUser.num} ${warningUser.name}").set(warningUser)
-            addFirestore.addOnSuccessListener {
-                Log.d("firebase","addOnSuccessListener")
+            val addFirestore = fireStore.collection("warning").document("${warningUser.num} ${warningUser.name}").set(warningUser)
+
+            when(checkInternetConnection()) {
+                true -> {
+                    addFirestore.addOnSuccessListener {
+                        Log.d("firebase","addOnSuccessListener")
+                        Toast.createToast(this, "경고 추가 성공", R.drawable.ic_check).show()
+                        finish()
+//                      AdminActivity.onResume()
+                    }
+                    addFirestore.addOnFailureListener {
+                        Log.d("firebase", "addOnFailureListener")
+                        Toast.createToast(this, "경고 추가 실패", R.drawable.ic_redx).show()
+                    }
+                }
+
+                false -> {
+                    Toast.createToast(this, "인터넷 연결 확인\n인터넷에 연결되면 자동으로 추가됩니다.", R.drawable.ic_redx).show()
+                    finish()
+                }
             }
-            addFirestore.addOnFailureListener {
-                Log.d("firebase", "addOnFailureListener")
-            }
+
+
+
         }
 
     }
@@ -90,5 +110,16 @@ class WriteAdminActivity : AppCompatActivity() {
         }
 
     }
+
+    fun checkInternetConnection() : Boolean {
+        val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+
+        if (activeNetwork != null)
+            return true
+
+        return false
+    }
+
 
 }

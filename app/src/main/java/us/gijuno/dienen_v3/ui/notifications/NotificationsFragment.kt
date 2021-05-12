@@ -58,6 +58,7 @@ class NotificationsFragment : Fragment() {
         notificationsViewModel.notilist.observe(viewLifecycleOwner) {
             (viewAdapter as MyAdapter).setItem(it)
             (viewAdapter as MyAdapter).notifyDataSetChanged()
+            noti_list_prograss.visibility = View.GONE
         }
 
 
