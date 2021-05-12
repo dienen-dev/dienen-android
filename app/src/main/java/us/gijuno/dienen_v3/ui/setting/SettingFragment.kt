@@ -69,22 +69,6 @@ class SettingFragment : Fragment() {
         val myIndex: Int = SharedPreference.prefs.getString("myIndex", "0").toInt()
         settingSpinner.setSelection(myIndex)
 
-
-        if(LoggedIn().isLoggedIn(LoggedIn().ACCESS_TOKEN)) {
-            identify_dienen.text = "디넌으로 이미 인증되었습니다."
-            identify_image.setImageResource(R.drawable.ic_check)
-            verify_dienen_btn.setOnClickListener {
-                logoutDialog()
-
-            }
-        } else {
-            identify_dienen.text = "디넌이신가요? 로그인 해주세요."
-            identify_image.setImageResource(0)
-            verify_dienen_btn.setOnClickListener {
-                startActivity(Intent(context, LoginActivity::class.java)) // Log In
-            }
-        }
-
         when {
             LoggedIn().isLoggedIn(LoggedIn().ACCESS_TOKEN) -> {
                 identify_dienen.text = "디넌으로 이미 인증되었습니다."
@@ -102,6 +86,10 @@ class SettingFragment : Fragment() {
                 go_to_admin.visibility = View.GONE
                 hide_admin.visibility = View.GONE
             }
+        }
+
+        go_to_admin.setOnClickListener {
+            startActivity(Intent(context, AdminActivity::class.java)) // Log In
         }
     }
 

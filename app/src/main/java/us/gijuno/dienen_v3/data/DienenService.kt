@@ -56,6 +56,13 @@ data class Students(
     val serial: List<String>,
 )
 
+data class Warning(
+    var num: String? = null,
+    var name: String? = null,
+    var date: String? = null,
+    var content: String? = null,
+)
+
 
 
 interface DienenService {

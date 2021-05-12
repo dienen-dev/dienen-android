@@ -34,11 +34,6 @@ class RegisterActivity : AppCompatActivity() {
         register_name_et.addTextChangedListener(textWatcher)
         register_code_et.addTextChangedListener(textWatcher)
 
-        val userID = register_id_et.text.toString()
-        val name = register_name_et.text.toString()
-        val password = register_id_et.text.toString()
-
-
 
         register_register_btn.setOnClickListener() {
 
