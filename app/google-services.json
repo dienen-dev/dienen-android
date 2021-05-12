@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "382108829992",
+    "firebase_url": "https://dienen-1558c.firebaseio.com",
+    "project_id": "dienen-1558c",
+    "storage_bucket": "dienen-1558c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382108829992:android:6a4759fed8fdf3b96f681d",
+        "android_client_info": {
+          "package_name": "us.gijuno.dienen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382108829992-gcd6hf8lp23q9rfgrjo9k6riij3vidcs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "us.gijuno.dienen",
+            "certificate_hash": "5c8622cab15a3c5bdf9c389903c53652c3602d66"
+          }
+        },
+        {
+          "client_id": "382108829992-gq4ritlkrhj9hp8uu3ep3umqflutdvnt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4A7oioOpvY-X01XfUjpRDNzs3KspaQ0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382108829992-gq4ritlkrhj9hp8uu3ep3umqflutdvnt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382108829992:android:92d6f78b36dfe6de6f681d",
+        "android_client_info": {
+          "package_name": "us.gijuno.dienen_v3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382108829992-gq4ritlkrhj9hp8uu3ep3umqflutdvnt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4A7oioOpvY-X01XfUjpRDNzs3KspaQ0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382108829992-gq4ritlkrhj9hp8uu3ep3umqflutdvnt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
