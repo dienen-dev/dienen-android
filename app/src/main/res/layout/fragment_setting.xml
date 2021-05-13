@@ -116,12 +116,12 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:textColor="@color/blackColor"
-                    android:fontFamily="@font/noto_bold"
-                    android:textSize="14sp"
-                    android:text="관리자 페이지"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_medium"
+                    android:text="관리자 페이지"
+                    android:textColor="@color/blackColor"
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:layout_width="10dp"
@@ -154,7 +154,7 @@
 
                 <Spinner
                     android:textSize="14sp"
-                    android:fontFamily="@font/noto_bold"
+                    android:fontFamily="@font/noto_medium"
                     android:textColor="@color/blackColor"
                     android:id="@+id/settingSpinner"
                     android:background="@drawable/ic_spinner_setting"

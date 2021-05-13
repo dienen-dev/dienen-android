@@ -56,11 +56,16 @@ data class Students(
     val serial: List<String>,
 )
 
-data class Warning(
+data class PostWarning(
     var num: String? = null,
     var name: String? = null,
-    var date: String? = null,
     var content: String? = null,
+)
+
+data class GetWarning(
+    val num_name: String? = null,
+    val times: String? = null,
+    val content: String? = null,
 )
 
 

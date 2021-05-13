@@ -1,5 +1,6 @@
 package us.gijuno.dienen_v3
 
+import android.content.Intent
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_write_admin.*
 import okhttp3.ResponseBody
 import retrofit2.Converter
 import retrofit2.Retrofit
-import us.gijuno.dienen_v3.data.Warning
+import us.gijuno.dienen_v3.data.PostWarning
 import java.lang.reflect.Type
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,42 +35,68 @@ class WriteAdminActivity : AppCompatActivity() {
         write_admin_btn.setOnClickListener {
             //한번만 눌러주세요
             write_admin_btn.setEnabled(false)
-            write_admin_btn.setTextColor(ContextCompat.getColor(this@WriteAdminActivity, R.color.colorPrimary))
+            write_admin_btn.setTextColor(
+                ContextCompat.getColor(
+                    this@WriteAdminActivity,
+                    R.color.colorPrimary
+                )
+            )
 
             val num = write_admin_num.text.toString()
             val name = write_admin_name.text.toString()
             val content = write_admin_content.text.toString()
             val currentDateTime = Calendar.getInstance().time
-            val date_time = SimpleDateFormat("yyyy.MM.dd; HH:mm:ss", Locale.KOREA).format(currentDateTime)
+            val date_time =
+                SimpleDateFormat("yyyy.MM.dd; HH:mm:ss", Locale.KOREA).format(currentDateTime)
 
-            val warningUser = Warning()
+            val warningUser = PostWarning()
 
             warningUser.num = num
             warningUser.name = name
-            warningUser.date = date_time
-            warningUser.content = content
 
-            val addFirestore = fireStore.collection("warning").document("${warningUser.num} ${warningUser.name}").set(warningUser)
+            val firestoreDB =
+                fireStore.collection("warning").document("${warningUser.num} ${warningUser.name}")
+            val getFirestore = firestoreDB.get()
+            getFirestore.addOnSuccessListener {
+                val test2 = it["content"]
+                Log.d("getFirestoreLister", test2.toString())
 
-            when(checkInternetConnection()) {
-                true -> {
-                    addFirestore.addOnSuccessListener {
-                        Log.d("firebase","addOnSuccessListener")
-                        Toast.createToast(this, "경고 추가 성공", R.drawable.ic_check).show()
-                        finish()
-//                      AdminActivity.onResume()
+                when (it["content"]) {
+                    "" -> {
+                        warningUser.content = "$date_time - $content"
                     }
-                    addFirestore.addOnFailureListener {
-                        Log.d("firebase", "addOnFailureListener")
-                        Toast.createToast(this, "경고 추가 실패", R.drawable.ic_redx).show()
+                    null -> {
+                        warningUser.content = "$date_time - $content"
+                    }
+                    else -> {
+                        warningUser.content = "${it["content"]}\n$date_time - $content"
                     }
                 }
+                val addFirestore = firestoreDB.set(warningUser)
+                when(checkInternetConnection()) {
+                    true -> {
 
-                false -> {
-                    Toast.createToast(this, "인터넷 연결 확인\n인터넷에 연결되면 자동으로 추가됩니다.", R.drawable.ic_redx).show()
-                    finish()
+                        addFirestore.addOnSuccessListener {
+                            Log.d("firebase","addOnSuccessListener")
+                            Toast.createToast(this, "경고 추가 성공", R.drawable.ic_check).show()
+                            startActivity(Intent(this, AdminActivity::class.java))
+                            finish()
+//                      AdminActivity.onResume()
+                        }
+                        addFirestore.addOnFailureListener {
+                            Log.d("firebase", "addOnFailureListener")
+                            Toast.createToast(this, "경고 추가 실패", R.drawable.ic_redx).show()
+                        }
+                    }
+
+                    false -> {
+                        Toast.createToast(this, "인터넷 연결 확인\n인터넷에 연결되면 자동으로 추가됩니다.", R.drawable.ic_redx).show()
+                        startActivity(Intent(this, AdminActivity::class.java))
+                        finish()
+                    }
                 }
             }
+
 
 
 
@@ -81,7 +108,12 @@ class WriteAdminActivity : AppCompatActivity() {
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
             if (TextUtils.isEmpty(write_admin_num.getText()) || TextUtils.isEmpty(write_admin_name.getText())) {
                 write_admin_btn.setEnabled(false)
-                write_admin_btn.setTextColor(ContextCompat.getColor(this@WriteAdminActivity, R.color.colorPrimary))
+                write_admin_btn.setTextColor(
+                    ContextCompat.getColor(
+                        this@WriteAdminActivity,
+                        R.color.colorPrimary
+                    )
+                )
             } else {
                 write_admin_btn.setEnabled(true)
                 write_admin_btn.setTextColor(Color.parseColor("#FFFFFF"))
@@ -101,7 +133,11 @@ class WriteAdminActivity : AppCompatActivity() {
     }
 
     class NullOnEmptyConverterFactory : Converter.Factory() {
-        override fun responseBodyConverter(type: Type?, annotations: Array<Annotation>?, retrofit: Retrofit?): Converter<ResponseBody, *>? {
+        override fun responseBodyConverter(
+            type: Type?,
+            annotations: Array<Annotation>?,
+            retrofit: Retrofit?
+        ): Converter<ResponseBody, *>? {
             val delegate = retrofit!!.nextResponseBodyConverter<Any>(this, type!!, annotations!!)
             return Converter<ResponseBody, Any> {
                 if (it.contentLength() == 0L) return@Converter EmptyResponse()
@@ -111,7 +147,7 @@ class WriteAdminActivity : AppCompatActivity() {
 
     }
 
-    fun checkInternetConnection() : Boolean {
+    fun checkInternetConnection(): Boolean {
         val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
 

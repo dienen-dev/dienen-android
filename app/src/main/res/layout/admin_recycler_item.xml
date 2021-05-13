@@ -12,7 +12,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="24dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/round_layout"
         android:clipToPadding="false"
         android:elevation="5dp"
