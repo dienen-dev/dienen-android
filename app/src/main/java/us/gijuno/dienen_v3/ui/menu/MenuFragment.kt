@@ -51,12 +51,12 @@ class MenuFragment : Fragment() {
             Log.d("HomeFrag", "menu get failed event called")
         }
 
-        root.menu_refresh_layout.setOnRefreshListener {
-            getDatas()
-            Handler().postDelayed({
-                root.menu_refresh_layout.isRefreshing = false
-            }, 1000)
-        }
+//        root.menu_refresh_layout.setOnRefreshListener {
+//            getDatas()
+//            Handler().postDelayed({
+//                root.menu_refresh_layout.isRefreshing = false
+//            }, 1000)
+//        }
 
         return root
     }

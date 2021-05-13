@@ -48,12 +48,12 @@ class NotificationsFragment : Fragment() {
             Toast.createToast(this.requireContext(), "공지 불러오기 실패", R.drawable.ic_redx).show()
         }
 
-        root.noti_refresh_layout.setOnRefreshListener {
-//            getDatas()
-            Handler().postDelayed({
-                root.noti_refresh_layout.isRefreshing = false
-            }, 1000)
-        }
+//        root.noti_refresh_layout.setOnRefreshListener {
+////            getDatas()
+//            Handler().postDelayed({
+//                root.noti_refresh_layout.isRefreshing = false
+//            }, 1000)
+//        }
 
         notificationsViewModel.notilist.observe(viewLifecycleOwner) {
             (viewAdapter as MyAdapter).setItem(it)

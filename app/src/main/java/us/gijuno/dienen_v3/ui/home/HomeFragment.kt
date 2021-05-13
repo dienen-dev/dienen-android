@@ -41,12 +41,12 @@ class HomeFragment : Fragment() {
             Log.d("HomeFrag", "menu get failed event called")
         }
 
-        root.home_refresh_layout.setOnRefreshListener {
-            getDatas()
-            Handler().postDelayed({
-                root.home_refresh_layout.isRefreshing = false
-            }, 1000)
-        }
+//        root.home_refresh_layout.setOnRefreshListener {
+//            getDatas()
+//            Handler().postDelayed({
+//                root.home_refresh_layout.isRefreshing = false
+//            }, 1000)
+//        }
 
 
         root.order_layout.setOnClickListener {
