@@ -5,17 +5,18 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
 
     defaultConfig {
         applicationId "us.gijuno.dienen_v3"
         minSdkVersion 23
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -62,4 +63,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     //commons-lang
     implementation 'org.apache.commons:commons-text:1.6'
+    //firebase FCM
+    implementation platform('com.google.firebase:firebase-bom:27.1.0')
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    //firebase in-app messaging
+    implementation 'com.google.firebase:firebase-inappmessaging-display:20.0.0'
+    implementation 'com.google.firebase:firebase-core:19.0.0'
 }

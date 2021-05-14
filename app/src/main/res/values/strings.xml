@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">디넌</string>
+    <string name="firebase_notification_channel_id">test_channel</string>
 </resources>
