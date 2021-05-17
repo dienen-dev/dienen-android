@@ -207,33 +207,20 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/personal_information"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_regular"
-                    android:text="개인정보 보관"
+                    android:text="@string/personal_information"
                     android:textColor="@color/colorPrimary"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_regular"
-                    android:text=" 및 "
-                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/noto_regular"
-                    android:text="웅앵약관"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/noto_regular"
-                    android:text="에 동의합니다"
+                    android:text="약관에 동의합니다"
                     android:textSize="12sp" />
 
             </LinearLayout>

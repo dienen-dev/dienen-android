@@ -15,6 +15,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Personal_information"
+            android:exported="true" />
+        <activity
             android:name=".WriteAdminActivity"
             android:exported="true" />
         <activity
@@ -39,10 +42,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service
-            android:name=".data.MyFirebaseMessagingService">
+
+        <service android:name=".data.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
     </application>
