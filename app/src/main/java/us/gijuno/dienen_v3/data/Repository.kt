@@ -125,8 +125,8 @@ class Repository {
         return noticeWriteCode
     }
 
-//    val dimigoinLogin: LiveData<DimigoinAuth> = MutableLiveData<DimigoinAuth>()
-//    val dimigoinLoginGetFailedEvent = SingleLiveEvent<Void>()
+    val dimigoinLogin: LiveData<DimigoinAuth> = MutableLiveData<DimigoinAuth>()
+    val dimigoinLoginGetFailedEvent = SingleLiveEvent<Void>()
     private var dimigoinAuth: DimigoinAuth = DimigoinAuth("","")
     fun postDimigoinLogin(): DimigoinAuth {
         try {

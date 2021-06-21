@@ -47,13 +47,23 @@ data class DimigoinAuth(
     val refreshToken: String,
 )
 
+data class StudnetsArray(
+    val students: List<Students>,
+)
+
 data class Students(
-    val name: List<String>,
-    val userType: List<String>,
-    val grade: List<String>,
-    val klass: List<String>,
-    val number: List<String>,
-    val serial: List<String>,
+    val _id: String,
+    val idx: Int,
+    val username: String,
+    val name: String,
+    val userType: String,
+    val gender: String,
+    val createdAt: String,
+    val updatedAt: String,
+    val klass: Int,
+    val grade: Int,
+    val number: Int,
+    val serial: Int,
 )
 
 data class PostWarning(
@@ -113,9 +123,8 @@ interface Dimigoin {
     fun postDimigoinLogin(
         @Body dimigoinLogin: DimigoinLogin): Call<DimigoinAuth>
 
-    @Headers("Authorization: Bearer ")
     @GET("user/student")
     fun getDimigoinStudent(
-        @Field("username") name: String
-    ): Call<Students>
+        @Header("Authorization") refreshToken: String
+    ): Call<StudnetsArray>
 }

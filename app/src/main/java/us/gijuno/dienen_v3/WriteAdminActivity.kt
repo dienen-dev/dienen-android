@@ -1,19 +1,18 @@
 package us.gijuno.dienen_v3
 
 import android.content.Intent
-import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import androidx.core.content.ContextCompat
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_write_admin.*
+import kotlinx.coroutines.Dispatchers
 import okhttp3.ResponseBody
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -22,11 +21,20 @@ import us.gijuno.dienen_v3.data.Repository
 import java.lang.reflect.Type
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.HashMap
+
+import android.os.AsyncTask
+import android.os.Build
+import android.os.StrictMode
+import android.os.StrictMode.ThreadPolicy
+
 
 class WriteAdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write_admin)
+        val policy = ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
         val fireStore = FirebaseFirestore.getInstance()
 //
 //        write_admin_num.addTextChangedListener(textWatcher)
@@ -74,11 +82,11 @@ class WriteAdminActivity : AppCompatActivity() {
                     }
                 }
                 val addFirestore = firestoreDB.set(warningUser)
-                when(checkInternetConnection()) {
+                when (checkInternetConnection()) {
                     true -> {
 
                         addFirestore.addOnSuccessListener {
-                            Log.d("firebase","addOnSuccessListener")
+                            Log.d("firebase", "addOnSuccessListener")
                             Toast.createToast(this, "경고 추가 성공", R.drawable.ic_check).show()
                             startActivity(Intent(this, AdminActivity::class.java))
                             finish()
@@ -91,7 +99,11 @@ class WriteAdminActivity : AppCompatActivity() {
                     }
 
                     false -> {
-                        Toast.createToast(this, "인터넷 연결 확인\n인터넷에 연결되면 자동으로 추가됩니다.", R.drawable.ic_redx).show()
+                        Toast.createToast(
+                            this,
+                            "인터넷 연결 확인\n인터넷에 연결되면 자동으로 추가됩니다.",
+                            R.drawable.ic_redx
+                        ).show()
                         startActivity(Intent(this, AdminActivity::class.java))
                         finish()
                     }
@@ -100,7 +112,8 @@ class WriteAdminActivity : AppCompatActivity() {
 
         }
 
-        val DimigoinToken = Repository().postDimigoinLogin().accessToken
+        Repository().postDimigoinLogin().accessToken
+
 
     }
 

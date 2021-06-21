@@ -26,7 +26,6 @@ class NullOnEmptyConverterFactory : Converter.Factory() {
 object DienenServiceRequester {
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://dienen-backend-waxwg4t74q-uc.a.run.app/")
-        .addConverterFactory(NullOnEmptyConverterFactory())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -87,10 +86,18 @@ object DimiRequester {
     }
 
     fun postDimigoinLogin(): DimigoinAuth {
-        var postDimigoinLogin = dimigoinService.postDimigoinLogin(DimigoinLogin("dindevdin", "dindevdin")).execute()
+        val postDimigoinLogin = dimigoinService.postDimigoinLogin(DimigoinLogin("dindevdin", "dindevdin")).execute()
 //        Log.d("DimigoinLogin-token", postDimigoinLogin.body().toString())
         Log.d("DimigoinLogin-code", postDimigoinLogin.code().toString())
+        getDimigoinStudents(postDimigoinLogin.body()?.accessToken.toString())
         return postDimigoinLogin.body()?: throw Exception()
+    }
+
+    fun getDimigoinStudents(dimigoinToken: String): StudnetsArray {
+        val getDimigoinStudents = dimigoinService.getDimigoinStudent("Bearer $dimigoinToken").execute().body()?: throw Exception()
+        Log.d("getDimigoinStu", getDimigoinStudents.toString())
+        Log.d("DimigoinStu-code", dimigoinService.getDimigoinStudent("Bearer $dimigoinToken").execute().code().toString())
+        return getDimigoinStudents
     }
 
 }
