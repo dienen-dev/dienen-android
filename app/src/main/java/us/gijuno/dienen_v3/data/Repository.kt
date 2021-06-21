@@ -86,14 +86,7 @@ class Repository {
         }
     }
 
-    private val _dimigoinLoginResponse = MutableLiveData<DimigoinAuth>()
-    val dimigoinLoginResponse: LiveData<DimigoinAuth> = _dimigoinLoginResponse
-    val dimigoinLoginResponseGetFailedEvent = SingleLiveEvent<Void>()
-    suspend fun getDimigoinAuth() {
-        DimiRequester.postDimigoinLogin(username = "dimigofrontdev", password = "dimigofrontdev").let {
 
-        }
-    }
 
     private var registerCode: Int = 500
     fun postRegister(name: String, userID: String, password: String, verificationkey: String): Int {
@@ -130,6 +123,26 @@ class Repository {
             e.printStackTrace()
         }
         return noticeWriteCode
+    }
+
+//    val dimigoinLogin: LiveData<DimigoinAuth> = MutableLiveData<DimigoinAuth>()
+//    val dimigoinLoginGetFailedEvent = SingleLiveEvent<Void>()
+    private var dimigoinAuth: DimigoinAuth = DimigoinAuth("","")
+    fun postDimigoinLogin(): DimigoinAuth {
+        try {
+            DimiRequester.postDimigoinLogin().let {
+//                withContext(Dispatchers.Main) {
+                    Log.d("DimigoinLoginResponse", it.toString())
+                    dimigoinAuth = it
+//                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+//            withContext(Dispatchers.Main) {
+//                dimigoinLoginGetFailedEvent.call()
+//            }
+        }
+        return dimigoinAuth
     }
 
 }

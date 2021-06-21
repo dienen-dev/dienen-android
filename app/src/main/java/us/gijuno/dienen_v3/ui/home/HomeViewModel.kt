@@ -38,6 +38,10 @@ class HomeViewModel : ViewModel() {
     }
     val notirecentGetFailedEvent = repository.notirecentGetFailedEvent
 
-
+//    val dimigoinLogin = repository.dimigoinLogin.also {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repository.postDimigoinLogin()
+//        }
+//    }
 
 }

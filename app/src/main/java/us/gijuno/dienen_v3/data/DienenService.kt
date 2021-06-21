@@ -66,6 +66,7 @@ data class GetWarning(
     val num_name: String? = null,
     val times: String? = null,
     val content: String? = null,
+    val times_num: Int? = null,
 )
 
 
@@ -103,16 +104,18 @@ interface DienenService {
     ): Call<NoticeWrite>
 }
 
-interface Dimibob {
-    @GET("meal/date/{date}")
-    fun getMenu(@Path("date") date: String): Call<Meal>
-}
 
 interface Dimigoin {
+    @GET("meal/date/{date}")
+    fun getMenu(@Path("date") date: String): Call<Meal>
+
     @POST("auth")
-    @FormUrlEncoded
     fun postDimigoinLogin(
-        @Field("username") name: String,
-        @Field("password") password: String
-    ): Call<DimigoinAuth>
+        @Body dimigoinLogin: DimigoinLogin): Call<DimigoinAuth>
+
+    @Headers("Authorization: Bearer ")
+    @GET("user/student")
+    fun getDimigoinStudent(
+        @Field("username") name: String
+    ): Call<Students>
 }

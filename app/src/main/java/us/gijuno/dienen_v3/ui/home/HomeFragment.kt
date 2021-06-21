@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_notifications.view.*
 import us.gijuno.dienen_v3.R
 import us.gijuno.dienen_v3.data.Keys
+import us.gijuno.dienen_v3.data.Repository
 import us.gijuno.dienen_v3.data.SharedPreference
 import us.gijuno.dienen_v3.ui.notifications.NoticeWriteActivity
 import java.util.*
@@ -102,7 +103,6 @@ class HomeFragment : Fragment() {
             noti_idk.text = "서버 펑 .."
             Log.d("HomeFrag", "notice recent get failed event called")
         }
-
 
     }
 }
