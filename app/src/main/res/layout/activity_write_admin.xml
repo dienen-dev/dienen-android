@@ -9,9 +9,9 @@
     tools:context=".ui.notifications.NoticeWriteActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,65 +24,31 @@
             android:textColor="@color/blackColor"
             android:textSize="24sp" />
 
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:fontFamily="@font/noto_medium"
-                android:textSize="14sp"
-                android:textColor="@color/blackColor"
-                android:text="학번"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <EditText
-                android:inputType="number"
-                android:id="@+id/write_admin_num"
-                android:nextFocusDown="@id/write_admin_name"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:hint="ex) 0000"
-                android:textSize="12dp"
-                android:textColor="@color/blackColor"
-                android:fontFamily="@font/noto_medium"
-                android:background="@drawable/round_edittext_5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
 
 
 
         <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="24dp"
+            android:orientation="vertical">
 
             <TextView
-                android:fontFamily="@font/noto_medium"
-                android:textSize="14sp"
-                android:textColor="@color/blackColor"
-                android:text="이름"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <EditText
-                android:id="@+id/write_admin_name"
-                android:nextFocusDown="@id/write_admin_content"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:hint="ex) 디테계"
-                android:textSize="12dp"
-                android:textColor="@color/blackColor"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_medium"
+                android:text="학번, 이름 검색"
+               android:textColor="@color/blackColor"
+                android:textSize="14sp" />
+
+            <AutoCompleteTextView
+                android:hint="0000 디넌"
+                android:padding="10dp"
+                android:textColor="@color/blackColor"
+                android:textSize="12dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/round_edittext_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -90,32 +56,32 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="24dp"
+            android:orientation="vertical">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_medium"
-                android:textSize="14sp"
-                android:textColor="@color/blackColor"
                 android:text="사유"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/blackColor"
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/write_admin_content"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:hint="필수X\n최대한 간결하게\nex) 소란, 무단지각, 고성방"
-                android:textSize="12dp"
-                android:textColor="@color/blackColor"
-                android:fontFamily="@font/noto_medium"
-                android:background="@drawable/round_edittext_5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_edittext_5"
+                android:fontFamily="@font/noto_medium"
+                android:hint="최대한 간결하게\nex) 소란, 무단지각, 고성방가"
+                android:padding="10dp"
+                android:textColor="@color/blackColor"
+                android:textSize="12dp" />
 
         </LinearLayout>
 

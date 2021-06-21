@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
@@ -41,14 +42,16 @@ class AdminActivity : AppCompatActivity() {
 
                 val num_name = "${it.documents[i].data?.get("num").toString()} ${it.documents[i].data?.get("name").toString()}"
                 val content = it.documents[i].data?.get("content").toString()
-                val times = "누적 ${StringUtils.countMatches(content, "\n") + 1}회"
+                val times_num = StringUtils.countMatches(content, "\n") + 1
+                val times = "누적 ${times_num}회"
 
-                initRecycler(num_name, times, content)
+
+                initRecycler(num_name, times, content, times_num)
             }
         }
     }
 
-    private fun initRecycler(num_name: String, times: String, content: String) {
+    private fun initRecycler(num_name: String, times: String, content: String, times_num: Int) {
         adminAdapter = AdminAdapter(this)
         admin_recycler.adapter = adminAdapter
 
@@ -57,7 +60,8 @@ class AdminActivity : AppCompatActivity() {
                 GetWarning(
                     num_name = num_name,
                     times = times,
-                    content = content
+                    content = content,
+                    times_num = times_num
                 )
             )
 
@@ -94,6 +98,25 @@ class AdminActivity : AppCompatActivity() {
                 num_name.text = item.num_name
                 times.text = item.times
                 content.text = item.content
+//                if (item.times_num!! >= 5) {
+//                    times.setTextColor(ContextCompat.getColor(context, R.color.warning))
+//                    Log.d("asdf", "5회 이상: ${item.num_name}, ${item.times}")
+//                } else if (item.times_num >= 3) {
+//                    times.setTextColor(ContextCompat.getColor(context, R.color.caution))
+//                    Log.d("asdf", "3회 이상: ${item.num_name}, ${item.times}")
+//                }
+                when {
+                    item.times_num!! >= 5 -> {
+                        times.setTextColor(ContextCompat.getColor(context, R.color.warning))
+                    }
+                    item.times_num >= 3 -> {
+                        times.setTextColor(ContextCompat.getColor(context, R.color.caution))
+                    }
+                    else -> {
+                        times.setTextColor(ContextCompat.getColor(context, R.color.blackColor))
+                    }
+                }
+
             }
         }
     }

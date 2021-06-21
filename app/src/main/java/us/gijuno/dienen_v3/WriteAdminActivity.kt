@@ -18,6 +18,7 @@ import okhttp3.ResponseBody
 import retrofit2.Converter
 import retrofit2.Retrofit
 import us.gijuno.dienen_v3.data.PostWarning
+import us.gijuno.dienen_v3.data.Repository
 import java.lang.reflect.Type
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,9 +28,9 @@ class WriteAdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write_admin)
         val fireStore = FirebaseFirestore.getInstance()
-
-        write_admin_num.addTextChangedListener(textWatcher)
-        write_admin_name.addTextChangedListener(textWatcher)
+//
+//        write_admin_num.addTextChangedListener(textWatcher)
+//        write_admin_name.addTextChangedListener(textWatcher)
         write_admin_content.addTextChangedListener(textWatcher)
 
         write_admin_btn.setOnClickListener {
@@ -41,18 +42,18 @@ class WriteAdminActivity : AppCompatActivity() {
                     R.color.colorPrimary
                 )
             )
-
-            val num = write_admin_num.text.toString()
-            val name = write_admin_name.text.toString()
+//
+//            val num = write_admin_num.text.toString()
+//            val name = write_admin_name.text.toString()
             val content = write_admin_content.text.toString()
             val currentDateTime = Calendar.getInstance().time
             val date_time =
                 SimpleDateFormat("yyyy.MM.dd; HH:mm:ss", Locale.KOREA).format(currentDateTime)
 
             val warningUser = PostWarning()
-
-            warningUser.num = num
-            warningUser.name = name
+//
+//            warningUser.num = num
+//            warningUser.name = name
 
             val firestoreDB =
                 fireStore.collection("warning").document("${warningUser.num} ${warningUser.name}")
@@ -97,27 +98,26 @@ class WriteAdminActivity : AppCompatActivity() {
                 }
             }
 
-
-
-
         }
+
+        val DimigoinToken = Repository().postDimigoinLogin().accessToken
 
     }
 
     private var textWatcher: TextWatcher = object : TextWatcher {
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            if (TextUtils.isEmpty(write_admin_num.getText()) || TextUtils.isEmpty(write_admin_name.getText())) {
-                write_admin_btn.setEnabled(false)
-                write_admin_btn.setTextColor(
-                    ContextCompat.getColor(
-                        this@WriteAdminActivity,
-                        R.color.colorPrimary
-                    )
-                )
-            } else {
-                write_admin_btn.setEnabled(true)
-                write_admin_btn.setTextColor(Color.parseColor("#FFFFFF"))
-            }
+//            if (TextUtils.isEmpty(write_admin_num.getText()) || TextUtils.isEmpty(write_admin_name.getText())) {
+//                write_admin_btn.setEnabled(false)
+//                write_admin_btn.setTextColor(
+//                    ContextCompat.getColor(
+//                        this@WriteAdminActivity,
+//                        R.color.colorPrimary
+//                    )
+//                )
+//            } else {
+//                write_admin_btn.setEnabled(true)
+//                write_admin_btn.setTextColor(Color.parseColor("#FFFFFF"))
+//            }
         }
 
         override fun beforeTextChanged(
