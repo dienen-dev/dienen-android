@@ -16,5 +16,7 @@
     <color name="white">#FFFFFF</color>
     <color name="chip_item">#FCFCFC</color>
     <color name="skeleton">#E9E9E9</color>
+    <color name="caution">#EA8611</color>
+    <color name="warning">#EA1111</color>
 </resources>
 
