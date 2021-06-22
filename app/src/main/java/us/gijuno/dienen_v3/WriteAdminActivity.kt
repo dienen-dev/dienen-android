@@ -1,6 +1,7 @@
 package us.gijuno.dienen_v3
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,10 @@ import android.os.AsyncTask
 import android.os.Build
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
+import android.text.TextUtils
+import android.widget.ArrayAdapter
+import org.apache.commons.lang3.StringUtils
+import us.gijuno.dienen_v3.data.Students
 
 
 class WriteAdminActivity : AppCompatActivity() {
@@ -36,9 +41,8 @@ class WriteAdminActivity : AppCompatActivity() {
         val policy = ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
         val fireStore = FirebaseFirestore.getInstance()
-//
-//        write_admin_num.addTextChangedListener(textWatcher)
-//        write_admin_name.addTextChangedListener(textWatcher)
+
+        num_name_search.addTextChangedListener(textWatcher)
         write_admin_content.addTextChangedListener(textWatcher)
 
         write_admin_btn.setOnClickListener {
@@ -50,18 +54,17 @@ class WriteAdminActivity : AppCompatActivity() {
                     R.color.colorPrimary
                 )
             )
-//
-//            val num = write_admin_num.text.toString()
-//            val name = write_admin_name.text.toString()
+
+            val numName = num_name_search.text.toString()
             val content = write_admin_content.text.toString()
             val currentDateTime = Calendar.getInstance().time
             val date_time =
                 SimpleDateFormat("yyyy.MM.dd; HH:mm:ss", Locale.KOREA).format(currentDateTime)
 
             val warningUser = PostWarning()
-//
-//            warningUser.num = num
-//            warningUser.name = name
+
+            warningUser.num = numName.substring(0..3)
+            warningUser.name = numName.substring(5)
 
             val firestoreDB =
                 fireStore.collection("warning").document("${warningUser.num} ${warningUser.name}")
@@ -112,25 +115,32 @@ class WriteAdminActivity : AppCompatActivity() {
 
         }
 
-        Repository().postDimigoinLogin().accessToken
+        val studentList = Repository().postDimigoinLogin().map {
+            "${it.serial} ${it.name}"
+        }
+
+        num_name_search.threshold = 1
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, studentList)
+        num_name_search.setAdapter(adapter)
 
 
     }
 
     private var textWatcher: TextWatcher = object : TextWatcher {
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-//            if (TextUtils.isEmpty(write_admin_num.getText()) || TextUtils.isEmpty(write_admin_name.getText())) {
-//                write_admin_btn.setEnabled(false)
-//                write_admin_btn.setTextColor(
-//                    ContextCompat.getColor(
-//                        this@WriteAdminActivity,
-//                        R.color.colorPrimary
-//                    )
-//                )
-//            } else {
-//                write_admin_btn.setEnabled(true)
-//                write_admin_btn.setTextColor(Color.parseColor("#FFFFFF"))
-//            }
+            if (TextUtils.isEmpty(num_name_search.getText())) {
+                write_admin_btn.setEnabled(false)
+                write_admin_btn.setTextColor(
+                    ContextCompat.getColor(
+                        this@WriteAdminActivity,
+                        R.color.colorPrimary
+                    )
+                )
+            } else {
+                write_admin_btn.setEnabled(true)
+                write_admin_btn.setTextColor(Color.parseColor("#FFFFFF"))
+            }
         }
 
         override fun beforeTextChanged(

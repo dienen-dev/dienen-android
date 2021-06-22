@@ -7,6 +7,7 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import us.gijuno.dienen_v3.EmptyResponse
+import us.gijuno.dienen_v3.data.DimiRequester.getDimigoinStudents
 import java.lang.reflect.Type
 
 class NullOnEmptyConverterFactory : Converter.Factory() {
@@ -85,17 +86,17 @@ object DimiRequester {
             ?: throw IllegalArgumentException()
     }
 
-    fun postDimigoinLogin(): DimigoinAuth {
-        val postDimigoinLogin = dimigoinService.postDimigoinLogin(DimigoinLogin("dindevdin", "dindevdin")).execute()
+    fun postDimigoinLogin(): List<Students> {
+        val postDimigoinLogin =
+            dimigoinService.postDimigoinLogin(DimigoinLogin("dindevdin", "dindevdin")).execute()
 //        Log.d("DimigoinLogin-token", postDimigoinLogin.body().toString())
         Log.d("DimigoinLogin-code", postDimigoinLogin.code().toString())
-        getDimigoinStudents(postDimigoinLogin.body()?.accessToken.toString())
-        return postDimigoinLogin.body()?: throw Exception()
+        return getDimigoinStudents(postDimigoinLogin.body()?.accessToken.toString()).students
     }
 
     fun getDimigoinStudents(dimigoinToken: String): StudnetsArray {
         val getDimigoinStudents = dimigoinService.getDimigoinStudent("Bearer $dimigoinToken").execute().body()?: throw Exception()
-        Log.d("getDimigoinStu", getDimigoinStudents.toString())
+        Log.d("getDimigoinStu", getDimigoinStudents.students[0].toString())
         Log.d("DimigoinStu-code", dimigoinService.getDimigoinStudent("Bearer $dimigoinToken").execute().code().toString())
         return getDimigoinStudents
     }

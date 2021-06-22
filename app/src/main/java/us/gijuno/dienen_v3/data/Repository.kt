@@ -125,15 +125,14 @@ class Repository {
         return noticeWriteCode
     }
 
-    val dimigoinLogin: LiveData<DimigoinAuth> = MutableLiveData<DimigoinAuth>()
-    val dimigoinLoginGetFailedEvent = SingleLiveEvent<Void>()
-    private var dimigoinAuth: DimigoinAuth = DimigoinAuth("","")
-    fun postDimigoinLogin(): DimigoinAuth {
+//    val dimigoinLogin: LiveData<DimigoinAuth> = MutableLiveData<DimigoinAuth>()
+//    val dimigoinLoginGetFailedEvent = SingleLiveEvent<Void>()
+    fun postDimigoinLogin(): List<Students> {
         try {
             DimiRequester.postDimigoinLogin().let {
 //                withContext(Dispatchers.Main) {
                     Log.d("DimigoinLoginResponse", it.toString())
-                    dimigoinAuth = it
+                    return it
 //                }
             }
         } catch (e: Exception) {
@@ -142,7 +141,7 @@ class Repository {
 //                dimigoinLoginGetFailedEvent.call()
 //            }
         }
-        return dimigoinAuth
+        return emptyList()
     }
 
 }

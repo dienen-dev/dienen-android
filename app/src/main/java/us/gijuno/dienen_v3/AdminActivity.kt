@@ -98,13 +98,6 @@ class AdminActivity : AppCompatActivity() {
                 num_name.text = item.num_name
                 times.text = item.times
                 content.text = item.content
-//                if (item.times_num!! >= 5) {
-//                    times.setTextColor(ContextCompat.getColor(context, R.color.warning))
-//                    Log.d("asdf", "5회 이상: ${item.num_name}, ${item.times}")
-//                } else if (item.times_num >= 3) {
-//                    times.setTextColor(ContextCompat.getColor(context, R.color.caution))
-//                    Log.d("asdf", "3회 이상: ${item.num_name}, ${item.times}")
-//                }
                 when {
                     item.times_num!! >= 5 -> {
                         times.setTextColor(ContextCompat.getColor(context, R.color.warning))
