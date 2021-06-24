@@ -1,6 +1,5 @@
 package us.gijuno.dienen_v3
 
-import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,14 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_admin.*
 import org.apache.commons.lang3.StringUtils
 import us.gijuno.dienen_v3.data.GetWarning
-import us.gijuno.dienen_v3.databinding.ToastBinding
 
 class AdminActivity : AppCompatActivity() {
     lateinit var adminAdapter: AdminAdapter
@@ -113,7 +110,6 @@ class AdminActivity : AppCompatActivity() {
             }
         }
     }
-
     class AdminViewModel : ViewModel() {
 
     }

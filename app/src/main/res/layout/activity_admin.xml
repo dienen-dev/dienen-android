@@ -14,16 +14,35 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginStart="24dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="5dp"
-            android:fontFamily="@font/noto_black"
-            android:text="누적 경고수"
-            android:textColor="@color/blackColor"
-            android:textSize="24sp" />
+            android:layout_marginEnd="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_black"
+                android:text="누적 경고수"
+                android:textColor="@color/blackColor"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/go_to_summary"
+                android:textColor="@color/blackColor"
+                android:fontFamily="@font/noto_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="요약 보기"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RelativeLayout
             android:id="@+id/go_to_write_admin"
