@@ -30,6 +30,10 @@ class AdminActivity : AppCompatActivity() {
             finish()
         }
 
+        go_to_summary.setOnClickListener {
+            startActivity(Intent(this, SummaryActivity::class.java))
+        }
+
         val fireStore = FirebaseFirestore.getInstance()
         val firestoreDB = fireStore.collection("warning").get().addOnSuccessListener {
             Log.d("AdminFirebase", "doc.data_size : ${it.documents.size}")

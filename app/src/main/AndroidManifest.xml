@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.SummaryActivity"
+            android:name=".SummaryActivity"
             android:exported="true" />
         <activity
             android:name=".Personal_information"
