@@ -103,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
                 android:layout_marginRight="24dp"
                 android:background="@drawable/round_layout"
                 android:clickable="true"
@@ -131,40 +132,6 @@
                     android:src="@drawable/ic_right_arrow" />
 
             </RelativeLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/noto_bold"
-                android:text="반 정보"
-                android:textColor="@color/blackColor"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/round_layout"
-                android:elevation="4dp"
-                android:orientation="horizontal">
-
-                <Spinner
-                    android:id="@+id/settingSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_spinner_setting"
-                    android:fontFamily="@font/noto_medium"
-                    android:textColor="@color/blackColor"
-                    android:textSize="14sp" />
-
-
-            </LinearLayout>
-
 
             <!--            <TextView-->
             <!--                android:layout_width="wrap_content"-->

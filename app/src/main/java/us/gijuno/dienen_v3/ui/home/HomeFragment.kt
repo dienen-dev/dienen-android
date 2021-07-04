@@ -54,12 +54,6 @@ class HomeFragment : Fragment() {
             startActivity(Intent(context, MealOrderActivity::class.java))
         }
 
-        val klassArray = resources.getStringArray(R.array.klass)
-        val myIndex = SharedPreference.prefs.getString("myIndex", "0").toInt()
-
-        val myklass = klassArray.get(myIndex)
-        root.my_grade_class.text = myklass
-
         Log.d("asdf", Keys.ACCESS_TOKEN.toString())
 
 

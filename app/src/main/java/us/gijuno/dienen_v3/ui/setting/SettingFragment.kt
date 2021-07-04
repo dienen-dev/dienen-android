@@ -33,41 +33,11 @@ class SettingFragment : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_setting, container, false)
 
-        val klass = resources.getStringArray(R.array.klass)
-
-        val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, klass)
-
-        root.settingSpinner.adapter = spinnerAdapter
-
-        root.settingSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val myGrade: String = getGrade(position)
-                val myKlass: String = getKlass(position)
-
-                SharedPreference.prefs.setString("myIndex", position.toString())
-                SharedPreference.prefs.setString("myGrade", myGrade)
-                SharedPreference.prefs.setString("myKlass", myKlass)
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO()//각 반별 정보 저장
-            }
-        }
-
         return root
     }
 
     override fun onResume() {
         super.onResume()
-
-        val myIndex: Int = SharedPreference.prefs.getString("myIndex", "0").toInt()
-        settingSpinner.setSelection(myIndex)
 
         when {
             LoggedIn().isLoggedIn(LoggedIn().ACCESS_TOKEN) -> {
@@ -103,15 +73,4 @@ class SettingFragment : Fragment() {
         }
         getDialog.start("로그아웃 하시겠습니까?")
     }
-
-    fun getGrade(index: Int): String {
-        val myGrade: String = ((index / 6) + 1).toString()
-        return myGrade
-    }
-
-    fun getKlass(index: Int): String {
-        val myKlass: String = ((index % 6) + 1).toString()
-        return myKlass
-    }
-
 }
