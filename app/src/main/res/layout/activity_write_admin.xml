@@ -25,8 +25,6 @@
             android:textSize="24sp" />
 
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,19 +38,20 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_medium"
                 android:text="학번, 이름 검색"
-               android:textColor="@color/blackColor"
+                android:textColor="@color/blackColor"
                 android:textSize="14sp" />
 
             <AutoCompleteTextView
                 android:id="@+id/num_name_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_edittext_5"
+                android:fontFamily="@font/noto_medium"
                 android:hint="0000 디넌"
                 android:padding="10dp"
                 android:textColor="@color/blackColor"
-                android:textSize="12dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/round_edittext_5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textSize="12dp" />
 
         </LinearLayout>
 
@@ -91,10 +90,6 @@
     <Button
         android:id="@+id/write_admin_btn"
         style="@style/state_button"
-        app:cornerRadius="23.5dp"
-        app:rippleColor="#C8C8C8"
-        app:strokeColor="@color/colorPrimary"
-        app:strokeWidth="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -107,6 +102,10 @@
         android:text="추가하기"
         android:textColor="@color/colorPrimary"
         android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:cornerRadius="23.5dp"
+        app:rippleColor="#C8C8C8"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="2dp" />
 
 </RelativeLayout>
