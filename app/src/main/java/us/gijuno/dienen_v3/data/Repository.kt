@@ -3,8 +3,11 @@ package us.gijuno.dienen_v3.data
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import kotlinx.android.synthetic.main.dialog.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import us.gijuno.dienen_v3.R
+import us.gijuno.dienen_v3.WriteAdminActivity
 import java.text.SimpleDateFormat
 import java.util.*
 

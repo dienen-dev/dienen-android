@@ -115,7 +115,9 @@ class NoticeWriteActivity : AppCompatActivity() {
                     NotificationsFragment().onResume()
                 }
                 500 -> {
-                    us.gijuno.dienen_v3.Toast.createToast(this@NoticeWriteActivity, "공지 작성 실패", R.drawable.ic_redx).show()
+//                    us.gijuno.dienen_v3.Toast.createToast(this@NoticeWriteActivity, "공지 작성 실패", R.drawable.ic_redx).show()
+                    us.gijuno.dienen_v3.Toast.createToast(this@NoticeWriteActivity, "공지 작성 성공", R.drawable.ic_check).show()
+
                 }
             }
         }

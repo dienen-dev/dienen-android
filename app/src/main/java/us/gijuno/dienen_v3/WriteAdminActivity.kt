@@ -42,7 +42,14 @@ class WriteAdminActivity : AppCompatActivity() {
         StrictMode.setThreadPolicy(policy)
         val fireStore = FirebaseFirestore.getInstance()
 
+        admin_write_time.setText(
+            SimpleDateFormat("yyyy.MM.dd; HH:mm:ss", Locale.KOREA).format(
+                Calendar.getInstance().time
+            )
+        )
+
         num_name_search.addTextChangedListener(textWatcher)
+        admin_write_time.addTextChangedListener(textWatcher)
         write_admin_content.addTextChangedListener(textWatcher)
 
         write_admin_btn.setOnClickListener {
@@ -57,9 +64,8 @@ class WriteAdminActivity : AppCompatActivity() {
 
             val numName = num_name_search.text.toString()
             val content = write_admin_content.text.toString()
-            val currentDateTime = Calendar.getInstance().time
-            val date_time =
-                SimpleDateFormat("yyyy.MM.dd; HH:mm:ss", Locale.KOREA).format(currentDateTime)
+            val date_time = admin_write_time.text.toString()
+
 
             val warningUser = PostWarning()
 
@@ -129,7 +135,7 @@ class WriteAdminActivity : AppCompatActivity() {
 
     private var textWatcher: TextWatcher = object : TextWatcher {
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            if (TextUtils.isEmpty(num_name_search.getText())) {
+            if (TextUtils.isEmpty(num_name_search.getText())||TextUtils.isEmpty(write_admin_content.getText())) {
                 write_admin_btn.setEnabled(false)
                 write_admin_btn.setTextColor(
                     ContextCompat.getColor(

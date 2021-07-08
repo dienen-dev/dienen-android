@@ -67,6 +67,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_medium"
+                android:text="일시"
+                android:textColor="@color/blackColor"
+                android:textSize="14sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/admin_write_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_edittext_5"
+                android:fontFamily="@font/noto_medium"
+                android:hint="yyyy.MM.dd; HH:mm:ss"
+                android:padding="10dp"
+                android:textColor="@color/blackColor"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="24dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_medium"
                 android:text="사유"
                 android:textColor="@color/blackColor"
                 android:textSize="14sp" />
@@ -78,8 +109,10 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/round_edittext_5"
                 android:fontFamily="@font/noto_medium"
+                android:gravity="top|start"
                 android:hint="최대한 간결하게\nex) 소란, 무단지각, 고성방가"
                 android:padding="10dp"
+                android:text="지각"
                 android:textColor="@color/blackColor"
                 android:textSize="12dp" />
 
