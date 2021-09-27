@@ -1,5 +1,6 @@
 package us.gijuno.dienen_v3
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,7 +27,7 @@ class SummaryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_summary)
 
         val fireStore = FirebaseFirestore.getInstance()
-        val firestoreDB = fireStore.collection("warning").get().addOnSuccessListener {
+        fireStore.collection("warning").get().addOnSuccessListener {
             Log.d("AdminFirebase", "doc.data_size : ${it.documents.size}")
 
             for (i in 1 until (it.documents.size)) {
@@ -46,6 +47,7 @@ class SummaryActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun initRecycler(num_name: String, times: String, content: String, times_num: Int) {
         summaryAdapter = SummaryAdapter(this)
         summary_recyclerview.adapter = summaryAdapter
